@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Welcome to the POI repository! This project aims to revolutionize the way innovations are documented, verified, and shared within a decentralized and secure ecosystem. By leveraging blockchain technology and advanced encryption techniques, POI provides a transparent and tamper-proof platform for innovators.
+
+## Features
+
+- Securely store and verify innovations on the blockchain.
+- Advanced encryption and hashing for data security and privacy.
+- User-friendly interface for easy innovation submission and verification.
+- Integration potential with established patent and publishing systems.
+- Transparent and collaborative environment for innovation documentation.
 
 ## Getting Started
 
