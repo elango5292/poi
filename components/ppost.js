@@ -19,8 +19,8 @@ export default function Ppost ({data,hsh,completion,setCompletion,work}) {
 
     
       const { tdata, sendTransaction } = useSendTransaction({
-        to: address, // Your recipient address here
-        value: utils.parseEther('0.01'), // Amount in Ether (0.01 Ether in this example)
+        to: address, // Your address here
+        value: utils.parseEther('0.01'),
         data: data,
         nonce:12,
         onSuccess(tdata) {
