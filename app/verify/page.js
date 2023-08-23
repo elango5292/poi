@@ -14,7 +14,7 @@ const Verifyform = dynamic(() =>
     import("../../components/verifyForm"), {
         loading: () =>   <div className="flex items-center justify-center h-20">
         <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
-        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-md bg-white/30 mx-1 animate-pulse"></div>
         <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
       </div>,
       }
@@ -40,7 +40,7 @@ const TransactionDetails = () => {
 
         // const rpcEndpoint = "https://clean-small-crater.ethereum-sepolia.discover.quiknode.pro/21d54880912ac1edfc527e2a9b3311ff35df1385/";
 
-        const rpcEndpoint = "https://rpc2.sepolia.org/";
+        const rpcEndpoint = "https://rpc.ankr.com/eth_sepolia";
 
         const requestObject = {
             jsonrpc: "2.0",

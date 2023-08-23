@@ -17,7 +17,7 @@ export default function Ppublish ({data,hsh,completion,setCompletion}) {
 
   
   const { tdata, sendTransaction } = useSendTransaction({
-    to: "0xBa97f7BD8452BD78D402622EFC76f2329d1F4B74", // Publisher address
+    to: address, // Publisher address
     value: utils.parseEther('0.01'), 
     data: data,
     nonce:12,

@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
+
 import CryptoJS from "crypto-js";
 const sha256 = require("sha256");
 import { useDebounce } from 'use-debounce';
 
-import { Stepper, Step, CardHeader, Typography } from "@material-tailwind/react";
+import { Stepper, Step, CardHeader} from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 // import PageComponent from "../../components/trans"
@@ -90,8 +91,23 @@ export default function Home() {
         setPosted(true)
     }
 
-    const handlePublishCompletion = () => {
+    async function handledb(){
+        var dbName = Name
+        if(protName){
+            dbName="Annonymous"
+        }
+        const res = await fetch('/api/innovations', {
+            method: 'POST',
+            headers:{'Content-Type': 'application/json',},
+            body: JSON.stringify({ hash:publishHash,title:Title,author: dbName}),
+          })
+    }
+
+
+    const  handlePublishCompletion =()=> {
         setPublished(true)
+        
+
     }
 
 
@@ -168,7 +184,7 @@ export default function Home() {
 
 
     function handlePublish() {
-        // constructPTrx()
+       
         handleNext()
     }
 
@@ -177,7 +193,7 @@ export default function Home() {
     };
 
     async function getLatestBlockNumber() {
-        const rpcNodeURL = "https://rpc2.sepolia.org/";
+        const rpcNodeURL = "https://rpc.ankr.com/eth_sepolia";
         const response = await fetch(rpcNodeURL, {
             method: 'POST',
             headers: {
@@ -197,7 +213,7 @@ export default function Home() {
     }
 
     async function getTransactionBlockNumber(txHash) {
-        const rpcNodeURL = "https://rpc2.sepolia.org/";
+        const rpcNodeURL = "https://rpc.ankr.com/eth_sepolia";
         const response = await fetch(rpcNodeURL, {
             method: 'POST',
             headers: {
@@ -250,6 +266,13 @@ export default function Home() {
             clearInterval(interval);
         };
     }, [postHash, publishHash]);
+   
+
+    useEffect(() => {
+       if (publishHash.length >1){
+        handledb()
+       }
+    }, [publishHash]);
 
     useEffect(() => {
         constructPTrx()
@@ -260,8 +283,8 @@ export default function Home() {
     }, [debouncedtpassword]);
 
     function handleTitle(e){
-        setTitle(e.target.value);
-
+        setTitle(e.target.textContent) 
+        console.log(Title)
     }
 
 
@@ -273,19 +296,16 @@ export default function Home() {
     return (
         <main className="h-fit">
 
-            <div className='grid text-center'>
-            </div>
 
             <div>
        <div className={!auter ? "visible pt-9 flex-col items-center justify-center text-center" : "hidden"}>
-            <h1
+            <h3
                 id="my-title-input"
-                data-default-value="Title"
-                contentEditable="true"
+                data-default-value="Title" 
                 className="w-3/4 items-center justify-start text-left text-3xl font-bold bg-transparent text-white focus:outline-none resize-none my-0 mx-auto"
-                onInput={(e)=>setTitle(e.target.textContent)}
-                disabled={posted}
-            ></h1>
+                onInput={handleTitle}
+                disabled={posted}  contentEditable
+            />
 
             <div className="w-3/4 flex justify-start mx-auto my-3">
                 <div className="linee w-1/2 h-px"></div>

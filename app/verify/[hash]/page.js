@@ -21,7 +21,7 @@ export default function verify() {
 
   async function getTransactionData(HsH) {
     const transactionHash = pathname.hash;
-    const rpcEndpoint = "https://rpc2.sepolia.org/";
+    const rpcEndpoint = "https://rpc.ankr.com/eth_sepolia";
 
    
 

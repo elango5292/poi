@@ -5,12 +5,12 @@ import Link from 'next/link'
 const UnderConstruction = () => {
     return (
         <main className="flex flex-col min-h-screen items-center w-full justify-center">
-        <div className="text-4xl md:text-6xl w-3/4 font-inter text-white font-bold	 text-center mb-6 md:mb-12">
+        <div className="text-4xl sm:text-6xl w-3/4 font-inter text-white font-bold	 text-center mb-6 md:mb-12">
             <p>Welcome to the Proof of Innovations!</p>
           
         </div>
         <div className="text-xs md:text-sm font-inter font-light text-white text-center mb-4 md:mb-8">
-        <p>! We are currently in the <span className="underline italic">beta</span> stage. Works on sepolia testnet.</p>
+        <p>! We are currently in the <span className="underline italic">beta</span> stage. Works on some chains only.</p>
         </div>
 
         <div className="flex flex-col w-3/4 md:flex-row justify-center">
