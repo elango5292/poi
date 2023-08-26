@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start -p 3008",
+     "build": "prisma generate && prisma db push && prisma db seed && next build"",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
