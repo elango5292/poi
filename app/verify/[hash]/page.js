@@ -28,7 +28,7 @@ export default function verify() {
     },
     80001: {
       name: "Polygon Mumbai",
-      rpc: "https://matic-mumbai.chainstacklabs.com"
+      rpc: "https://polygon-mumbai-bor.publicnode.com"
     },
     97: {
       name: "Binance Smart Chain Testnet",
