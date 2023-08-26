@@ -5,6 +5,8 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
   sepolia,arbitrum,avalanche,bscTestnet,bsc,polygonMumbai,polygon,mainnet,avalancheFuji
 } from "wagmi/chains";
+
+
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
@@ -37,7 +39,10 @@ import Ppublish from "./ppublish";
 
 // const activeChain = "goerli";
 
-const SendTrans = ({ data, hsh, s, completion, setCompletion,work }) => {
+const SendTrans = ({ data, hsh, s, completion, setCompletion,work,chain }) => {
+
+   
+
   const handletx = (childData) => {
     settx(childData);
   };
@@ -49,7 +54,7 @@ const SendTrans = ({ data, hsh, s, completion, setCompletion,work }) => {
     <div>
       <WagmiConfig config={wagmiConfig}>
         <RainbowKitProvider chains={chains}>
-          {va === "showwal" && <Trans />}
+          {va === "showwal" && <Trans setchain={chain} />}
 
           {va === 0 && (
             <Ppost

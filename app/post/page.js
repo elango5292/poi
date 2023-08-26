@@ -59,6 +59,58 @@ export default function Home() {
     const [PublishConfirmations, setPublishConfirmations] = useState("");
     const [debouncedtpassword] = useDebounce(tpassword, 1000);
     const [auter, setauter] = useState(false);
+    const [chain, setchain] = useState("");
+    var rpc =""
+
+
+    const networks = {
+        11155111: {
+          network: "sepolia",
+          rpc: "https://rpc.ankr.com/eth_sepolia"
+        },
+        80001: {
+          name: "Polygon Mumbai",
+          rpc: "https://matic-mumbai.chainstacklabs.com"
+        },
+        97: {
+          name: "Binance Smart Chain Testnet",
+          rpc: "https://data-seed-prebsc-1-s1.binance.org:8545"
+        },
+        43113: {
+          name: "Avalanche Fuji",
+          rpc: "https://api.avax-test.network/ext/bc/C/rpc"
+        },
+        42161: {
+          name: "Arbitrum One",
+          rpc: "https://arb1.arbitrum.io/rpc"
+        },
+        43114: {
+          name: "Avalanche",
+          rpc: "https://api.avax.network/ext/bc/C/rpc"
+        },
+        137: {
+          name: "Polygon",
+          rpc: "https://polygon-rpc.com"
+        },
+        56: {
+          name: "BNB Smart Chain",
+          rpc: "https://rpc.ankr.com/bsc"
+        },
+        1: {
+          network: "Ethereum",
+          rpc: "https://cloudflare-eth.com"
+        }
+      };
+
+    useEffect(() => {
+   
+
+        const selectedNetwork = networks[chain];
+        if (selectedNetwork ) {
+          rpc = selectedNetwork.rpc;}
+
+    }, [chain]);
+
 
 
     function handleAuter(){
@@ -92,6 +144,7 @@ export default function Home() {
     }
 
     async function handledb(){
+        var dbdate = new Date().toUTCString()
         var dbName = Name
         if(protName){
             dbName="Annonymous"
@@ -99,7 +152,7 @@ export default function Home() {
         const res = await fetch('/api/innovations', {
             method: 'POST',
             headers:{'Content-Type': 'application/json',},
-            body: JSON.stringify({ hash:publishHash,title:Title,author: dbName}),
+            body: JSON.stringify({ hash:publishHash,title:Title,author: dbName, date:dbdate, chain:chain}),
           })
     }
 
@@ -112,14 +165,6 @@ export default function Home() {
 
 
 
-    function validateInput(e) {
-        const inputValue = event.target.value;   
-        if (inputValue.includes("<>")) {
-          document.getElementById("Er"+e.target.id).style.display = "inline";
-        } else { 
-          document.getElementById("Er"+e.target.id).style.display = "none";
-        }
-      }
 
     function constructTrx(
 
@@ -193,7 +238,7 @@ export default function Home() {
     };
 
     async function getLatestBlockNumber() {
-        const rpcNodeURL = "https://rpc.ankr.com/eth_sepolia";
+        const rpcNodeURL = rpc;
         const response = await fetch(rpcNodeURL, {
             method: 'POST',
             headers: {
@@ -201,7 +246,7 @@ export default function Home() {
             },
             body: JSON.stringify({
                 jsonrpc: '2.0',
-                id: 1,
+                id: chain,
                 method: 'eth_blockNumber',
                 params: [],
             }),
@@ -213,7 +258,7 @@ export default function Home() {
     }
 
     async function getTransactionBlockNumber(txHash) {
-        const rpcNodeURL = "https://rpc.ankr.com/eth_sepolia";
+        const rpcNodeURL = rpc;
         const response = await fetch(rpcNodeURL, {
             method: 'POST',
             headers: {
@@ -221,7 +266,7 @@ export default function Home() {
             },
             body: JSON.stringify({
                 jsonrpc: '2.0',
-                id: 1,
+                id: chain,
                 method: 'eth_getTransactionByHash',
                 params: [txHash],
             }),
@@ -375,7 +420,7 @@ export default function Home() {
                     <div className="flex flex-col px-2">
                         {activeStep === 0 && (
                             <div className="flex flex-col items-center">
-                                <PageComponent s="showwal" className="self-center"/>
+                                <PageComponent s="showwal" className="self-center" chain={setchain}/>
                                 <div className="backdrop-blur-md bg-black/30 text-center items-center w-auto lg:min-w-700 rounded-md border-0 bg-black/5 px-3.5 py-3.5 text-white shadow-sm ring-1 ring-inset ring-white/10 my-4 ">
                                     <p className="text-left pb-3 m-auto">Encrypt Post Transaction:</p>
                                     <input
@@ -533,7 +578,7 @@ export default function Home() {
                             </button>
 
 
-                            <Link className=" w-auto" href={"/verify/"+postHash+"/?p="+tpassword}>
+                            <Link className=" w-auto" href={"/verify/"+postHash+"/?p="+tpassword+"&chain="+chain}>
                                 View <FaArrowRight />
                             </Link>
 

@@ -9,6 +9,35 @@ import { LuExternalLink } from "react-icons/lu";
 import dynamic from 'next/dynamic'
 import { MdHideSource } from 'react-icons/md';
 import Link from 'next/link'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+ 
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+
+
+
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+
+
 
 const Verifyform = dynamic(() =>
     import("../../components/verifyForm"), {
@@ -33,20 +62,64 @@ const TransactionDetails = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [showPopup2, setShowPopup2] = useState(false);
     const [transactionData, settransactionData] = useState("")
+    const [chain, setchain] = useState("1");
+    const [rpc, setrpc] = useState("");
 
+    useEffect(() => {
+        setrpc(networks[chain].rpc)
+       
+    }, [chain]);
+
+    const networks = {
+        11155111: {
+          network: "sepolia",
+          rpc: "https://clean-small-crater.ethereum-sepolia.discover.quiknode.pro/21d54880912ac1edfc527e2a9b3311ff35df1385/"
+        },
+        80001: {
+          name: "Polygon Mumbai",
+          rpc: "https://matic-mumbai.chainstacklabs.com"
+        },
+        97: {
+          name: "Binance Smart Chain Testnet",
+          rpc: "https://data-seed-prebsc-1-s1.binance.org:8545"
+        },
+        43113: {
+          name: "Avalanche Fuji",
+          rpc: "https://api.avax-test.network/ext/bc/C/rpc"
+        },
+        42161: {
+          name: "Arbitrum One",
+          rpc: "https://arb1.arbitrum.io/rpc"
+        },
+        43114: {
+          name: "Avalanche",
+          rpc: "https://api.avax.network/ext/bc/C/rpc"
+        },
+        137: {
+          name: "Polygon",
+          rpc: "https://polygon-rpc.com"
+        },
+        56: {
+          name: "BNB Smart Chain",
+          rpc: "https://rpc.ankr.com/bsc"
+        },
+        1: {
+          network: "Ethereum",
+          rpc: "https://cloudflare-eth.com"
+        }
+      };
+      
 
 
     async function getTransactionData(HsH) {
 
-        // const rpcEndpoint = "https://clean-small-crater.ethereum-sepolia.discover.quiknode.pro/21d54880912ac1edfc527e2a9b3311ff35df1385/";
-
-        const rpcEndpoint = "https://rpc.ankr.com/eth_sepolia";
+        const rpcEndpoint = rpc;
 
         const requestObject = {
             jsonrpc: "2.0",
             method: "eth_getTransactionByHash",
             params: [HsH],
-            id: 1,
+            id: chain,
         };
 
 
@@ -75,13 +148,13 @@ const TransactionDetails = () => {
 
     async function getTime(bnum) {
 
-        const rpcEndpoint = "https://clean-small-crater.ethereum-sepolia.discover.quiknode.pro/21d54880912ac1edfc527e2a9b3311ff35df1385/";
+        const rpcEndpoint = rpc
 
         const requestObject = {
             jsonrpc: "2.0",
             method: "eth_getBlockByNumber",
             params: [bnum, false],
-            id: 1,
+            id: chain,
         };
 
         const response = await fetch(rpcEndpoint, {
@@ -95,13 +168,6 @@ const TransactionDetails = () => {
         const responseData = await response.json();
         const timestamp = parseInt(responseData.result.timestamp * 1000)
         const date = new Date(timestamp);
-        //       const year = date.getFullYear();
-        //   const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so add 1
-        //   const day = String(date.getDate()).padStart(2, '0');
-        //   const hours = String(date.getHours()).padStart(2, '0');
-        //   const minutes = String(date.getMinutes()).padStart(2, '0');
-        //   const seconds = String(date.getSeconds()).padStart(2, '0');
-        //   console.log(month,day,hours,minutes,date)
         setTime(date.toUTCString())
 
     }
@@ -128,43 +194,95 @@ const TransactionDetails = () => {
 
 
     }
-    function handleSubmit() {
-
+    function handleSubmit(e) {
+        e.preventDefault();
         handleCollect()
         setShowPopup(true)
 
     }
 
+   
+    const FormSchema = z.object({
+        username: z.string().min(2, {
+          message: "Username must be at least 2 characters.",
+        }),
+      })
+
+      const form = useForm({
+        resolver: zodResolver(FormSchema),
+      })
+
+
+      function onSubmit(data) {
+        handleCollect()
+        setShowPopup(true)
+      }
+
+
     return (
         <main>
             <div>
-                {/* <h1 className="grid text-center mx-4 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 xl:w-1/3 rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4">Verify your Invention</h1> */}
+
+          
 
 
+                <div className=' mx-4 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 px-5 py-5 mb-4'>
+               
 
-                <form className='grid text-center mx-4 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 xl:w-1/3 rounded-md border-0 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 mb-4'>
-                    <p className="p-2">Enter your Publish Hash</p>
-                    <input
-                        type="text"
-                        className="w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4"
-                        value={transactionHash}
-                        onChange={(e) => setTransactionHash(e.target.value)}
-                        placeholder="Transaction Hash"
-                    />
 
-                    <p
-                        onClick={handleSubmit}
-                        className="text-2xl m-5 cursor-pointer select-none w-auto rounded-md bg-white/80 bg-transparent-30 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                    >
-                        Search
-                </p>
-                </form>
+    <Form {...form}>
+      <form className="w-2/3 mt-5 mb-5 space-y-6">
+        <FormField
+          control={form.control}
+          name="Publish Hash"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Publish Hash</FormLabel>
+              <FormControl>
+                <Input placeholder="0x1231..." {...field} value={transactionHash} onChange={(e) => setTransactionHash(e.target.value)}/>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+<div className="flex overflow-auto justify-between items-center">
+<Select onValueChange={setchain} className="self-center ">
+      <SelectTrigger className="w-[180px] mx-1 my-2">
+        <SelectValue placeholder="Select Chain" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Chains Available</SelectLabel>
+          <SelectItem value="11155111">Sepolia</SelectItem>
+<SelectItem value="80001">Polygon Mumbai</SelectItem>
+<SelectItem value="97">BSC Testnet</SelectItem>
+<SelectItem value="43113">Avalanche Fuji</SelectItem>
+<SelectItem value="42161">Arbitrum One</SelectItem>
+<SelectItem value="43114">Avalanche</SelectItem>
+<SelectItem value="137">Polygon</SelectItem>
+<SelectItem value="56">BNB Smart Chain</SelectItem>
+<SelectItem value="1">Ethereum</SelectItem>
+
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+
+        <Button onClick={handleSubmit} className="mx-2">Search</Button>
+{/* 0xcec6c8b7c08879c46905edd151f1a16b3d89de342926cf81a62efa0e86e3f481 */}
+        </div>
+      </form>
+    </Form>
+    
+
+
+        
+                </div>
 
 
 
                 {(showPopup) && (
                     <div
-                        className=" mx-4 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 xl:w-1/3 rounded-md border-0 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 mb-4">
+                        className=" mx-4 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 rounded-md border-0 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 mb-4">
 
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
@@ -174,7 +292,7 @@ const TransactionDetails = () => {
                                         {time}
                                     </div>
 
-                                    <a href={`/verify/${words[1]}/?p=${words[2]}`} target="_blank">
+                                    <a href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}`} target="_blank">
                                         <b className="text-white-700 my-5">
                                             {words[4]} <LuExternalLink className="inline" />
                                         </b>

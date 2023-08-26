@@ -48,7 +48,11 @@ export async function POST(req) {
     data:{
         title:inno.title,
         hash:inno.hash,
-        author: inno.author
+        author: inno.author,
+        pass: inno.pass,
+        date: inno.date,
+        chain: inno.chain
+
     }
   })
   

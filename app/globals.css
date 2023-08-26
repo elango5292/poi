@@ -2,93 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-html {
-    --scroll-behavior: smooth!important;
-    scroll-behavior: smooth!important;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+  
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+  
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+  }
+  
+  html {
+      --scroll-behavior: smooth!important;
+      scroll-behavior: smooth!important;
+      }
+      
+    
+    .stepper-container {
+      width: 80px; /* Adjust the width as needed */
+      /* Adjust the height as needed */
+      
+    }
+  
+    .circle {
+      position: relative;
+      width: 17px; /* Adjust the width and height as needed */
+      height: 17px;
+      border-radius: 50%;
+      background-color: #ffffff; /* Adjust the background color as needed */
+      margin: 0px; /* Add margin to center the circle */
+    }
+  
+    .circle::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the inner circle */
+      width: 23px; 
+      height: 23px;
+      border-radius: 50%;
+      border: 2px solid rgb(255, 255, 255); /* Adjust the border color and thickness as needed */
     }
     
+    .circleCompleted {
+      position: relative;
+      width: 17px; /* Adjust the width and height as needed */
+      height: 17px;
+      border-radius: 50%;
+      background-color: #81C784; /* Adjust the background color as needed */
+      margin: 0px; /* Add margin to center the circle */
+    }
   
-  .stepper-container {
-    width: 80px; /* Adjust the width as needed */
-    /* Adjust the height as needed */
-    
-  }
-
-  .circle {
-    position: relative;
-    width: 17px; /* Adjust the width and height as needed */
-    height: 17px;
-    border-radius: 50%;
-    background-color: #ffffff; /* Adjust the background color as needed */
-    margin: 0px; /* Add margin to center the circle */
-  }
-
-  .circle::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center the inner circle */
-    width: 23px; 
-    height: 23px;
-    border-radius: 50%;
-    border: 2px solid rgb(255, 255, 255); /* Adjust the border color and thickness as needed */
+    .circleCompleted::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the inner circle */
+      width: 23px; 
+      height: 23px;
+      border-radius: 50%;
+      border: 2px solid #ffffff; /* Adjust the border color and thickness as needed */
+    }
+  
+  .linee{
+  
+      background: linear-gradient(148deg, #FFF 16.67%, rgba(255, 255, 255, 0.00) 100%);
   }
   
-  .circleCompleted {
-    position: relative;
-    width: 17px; /* Adjust the width and height as needed */
-    height: 17px;
-    border-radius: 50%;
-    background-color: #81C784; /* Adjust the background color as needed */
-    margin: 0px; /* Add margin to center the circle */
-  }
-
-  .circleCompleted::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center the inner circle */
-    width: 23px; 
-    height: 23px;
-    border-radius: 50%;
-    border: 2px solid #ffffff; /* Adjust the border color and thickness as needed */
-  }
-
-.linee{
-
-    background: linear-gradient(148deg, #FFF 16.67%, rgba(255, 255, 255, 0.00) 100%);
-}
-
-#my-title-input[data-default-value]::before {
-    content: attr(data-default-value);
-    color: #a0aec0;
-    pointer-events: none;
-  }
-
-  #my-title-input[data-default-value]:not(:empty)::before {
-    display: none;
-  }
+  #my-title-input[data-default-value]::before {
+      content: attr(data-default-value);
+      color: #a0aec0;
+      pointer-events: none;
+    }
+  
+    #my-title-input[data-default-value]:not(:empty)::before {
+      display: none;
+    }

@@ -2,9 +2,11 @@
 import { useState } from "react"
 import useSWR from 'swr'
 
-import { CgProfile,MdHideSource } from "react-icons/cg";
+import { CgProfile } from "react-icons/cg";
+import { MdHideSource } from "react-icons/md";
 
 import { AiOutlineSearch } from "react-icons/ai";
+import Link from "next/link";
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function Page ({ index }) {
@@ -18,13 +20,13 @@ function Page ({ index }) {
     return <div>Error: {error.message}</div>
   } else {
     console.log(data)
-    return (data.ddf.map((item) => <div className=" flex flex-col flex-wrap bg-transparent border-[#2E2E2E] hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#cecece] rounded-[4px] border-[1px] my-1 py-4 pl-4" key={item.id}><><p className="font-light tracking-[0.2px]">12-03-2023</p></>
+    return (data.ddf.map((item) => <Link href={`/innovations/${item.hash}/?chain=${item.chain}`}><div className=" flex flex-col flex-wrap bg-transparent border-[#2E2E2E] hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#cecece] rounded-[4px] border-[1px] my-1 py-4 pl-4" key={item.id}><><p className="font-light tracking-[0.2px]">{item.date}</p></>
     <><h1 className="font-bold tracking-[-0.1px] mr-2	my-2">{item.title}</h1></>
     <>{(item.author != "Annonymous")? <p className="mr-2">
                                                 <CgProfile className="mr-2 font-medium tracking-[-0.085px] inline" />{item.author}
                                              </p> : <p className="mr-2"><MdHideSource className="mx-2 inline" /> "Annonymous"</p>}
                                              
-                                            </></div>))
+                                            </></div></Link>))
   }
 }
 
