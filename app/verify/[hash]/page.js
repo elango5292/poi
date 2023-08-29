@@ -109,7 +109,7 @@ handleCollect()
     console.log(transactionData);
 
     const cleanedHexString = reciept.result.input.slice(2);
-    setpostdate(getTime(reciept.result.blockNumber))
+    setpostdate(getTime(reciept.result.blockNumber,chain))
     console.log("cleanedHexString", cleanedHexString);
 
     let decData = CryptoJS.enc.Hex.parse(cleanedHexString).toString(CryptoJS.enc.Utf8)
