@@ -106,7 +106,7 @@ export default function Home() {
         </div>
 
       
-        <div className="z-[40] md:left-[30%] overflow-hidden md:top-[2%] top-[14%] mt-6 mx-auto text-center md:absolute w-3/4 h-1/2   md:min-w-[75%] md:h-full select-none max-w-[1000px] max-h-[1000px]">
+        <div className="z-[40] md:left-[30%]  md:mt-1 overflow-hidden md:top-[2%] top-[14%] mt-6 mx-auto text-center md:absolute w-3/4 h-1/2   md:min-w-[75%] md:h-full select-none max-w-[1000px] max-h-[1000px]">
           <Canvas camera={{ fov: 45, position: [-100, 450, 120] }}>
             <Float speed={1} rotationIntensity={1} floatIntensity={1} floatingRange={[1, 10]}>
               <Scene />
