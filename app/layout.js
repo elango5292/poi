@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
                     }}
                 />
             </div> */}
-            <div className="mt-24">
+            <div >
         {children}
         </div>
       </body>

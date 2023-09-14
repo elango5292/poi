@@ -41,7 +41,7 @@ export default function verify() {
 
 
   return(
-    <div className=" flex justify-center h-screen">
+    <div className=" flex justify-center h-screen mt-24">
     <div className="flex flex-row w-screen justify-center mx-4 flex-wrap">
     <div className="relative mt-3 mr-5">
   <i className="absolute top-0 left-0">

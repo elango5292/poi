@@ -93,3 +93,20 @@
     #my-title-input[data-default-value]:not(:empty)::before {
       display: none;
     }
+
+    .hero {
+        background-image: url("/g14.svg");
+        
+      }
+.heroblack1{
+    background: linear-gradient(287deg, rgba(0, 0, 0, 0.09) 0%, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0.11) 60.76%);
+}
+
+.heroblack2{
+    background: linear-gradient(276deg, rgba(0, 0, 0, 0.80) 18.75%, rgba(0, 0, 0, 0.63) 51.46%, rgba(0, 0, 0, 0.80) 86.46%);
+}
+
+.heroblack3{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.59) 18.75%, rgba(0, 0, 0, 0.59) 51.56%, rgba(24, 24, 24, 0.59) 86.46%);
+}
+

@@ -107,7 +107,7 @@ async function getTransactionData(HsH) {
 
 
 if (words) {
-    redirect('/verify/'+words[1]+'/?p='+words[2]+"&chain="+chain)
+    redirect('/verify/'+words[1]+'/?p='+encodeURIComponent(words[2])+"&chain="+chain)
   }
 
 

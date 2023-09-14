@@ -12,7 +12,8 @@ import Link from 'next/link'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
- 
+import networks from "../../lib/networks"
+
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -64,51 +65,16 @@ const TransactionDetails = () => {
     const [transactionData, settransactionData] = useState("")
     const [chain, setchain] = useState("1");
     const [rpc, setrpc] = useState("");
+    
 
     useEffect(() => {
-        setrpc(networks[chain].rpc)
+
+        if (chain){
+            setrpc(networks(chain))
+        }
+        
        
     }, [chain]);
-
-    const networks = {
-        11155111: {
-          network: "sepolia",
-          rpc: "https://clean-small-crater.ethereum-sepolia.discover.quiknode.pro/21d54880912ac1edfc527e2a9b3311ff35df1385/"
-        },
-        80001: {
-          name: "Polygon Mumbai",
-          rpc: "https://polygon-mumbai-bor.publicnode.com"
-        },
-        97: {
-          name: "Binance Smart Chain Testnet",
-          rpc: "https://data-seed-prebsc-1-s1.binance.org:8545"
-        },
-        43113: {
-          name: "Avalanche Fuji",
-          rpc: "https://api.avax-test.network/ext/bc/C/rpc"
-        },
-        42161: {
-          name: "Arbitrum One",
-          rpc: "https://arb1.arbitrum.io/rpc"
-        },
-        43114: {
-          name: "Avalanche",
-          rpc: "https://api.avax.network/ext/bc/C/rpc"
-        },
-        137: {
-          name: "Polygon",
-          rpc: "https://polygon-rpc.com"
-        },
-        56: {
-          name: "BNB Smart Chain",
-          rpc: "https://rpc.ankr.com/bsc"
-        },
-        1: {
-          network: "Ethereum",
-          rpc: "https://cloudflare-eth.com"
-        }
-      };
-      
 
 
     async function getTransactionData(HsH) {
@@ -220,7 +186,7 @@ const TransactionDetails = () => {
 
 
     return (
-        <main>
+        <main className="mt-24">
             <div>
 
           
