@@ -88,7 +88,7 @@ export default function Home() {
 
       <div className="w-screen flex flex-row flex-wrap h-full md:h-screen absolute">
         <div className="md:left-[15%] text-center md:text-left mx-3 relative z-[40] w-full sm:w-1/4  top-[12%] md:top-[25%]">
-          <h3 className="herotitle text-white sm:mx-9 md:mx-auto text-4xl  mx-2  md:text-6xl not-italic font-black  md:font-semibold leading-[100%] md:tracking-[-3.2px] select-none">Welcome to proof of innovations</h3>
+          <h3 className="herotitle text-white sm:mx-9 md:mx-auto text-5xl  mx-2  md:text-6xl not-italic font-black  md:font-semibold leading-[100%] md:tracking-[-3.2px] select-none">Welcome to proof of innovations</h3>
 
           <p className="md:my-5 my-7 text-lg mx-9 md:mx-auto shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none">Create an immutable record of your ideas</p>
           <Buttonn variant="outline" className="select-none text-md px-14 md:py-6 shadow-sm hover:shadow-md hover:bg-zinc-950 hover:shadow-slate-50 shadow-white md:top-[5%]">
