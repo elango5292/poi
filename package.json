@@ -17,7 +17,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slot": "^1.0.2",
-   
+    "@radix-ui/react-toast": "^1.1.4",
     "@rainbow-me/rainbowkit": "^1.0.7",
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.13.7",
@@ -53,7 +53,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "depcheck": "^1.4.6",
     "prisma": "^5.1.1"
   }
 }

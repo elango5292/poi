@@ -186,7 +186,7 @@ const TransactionDetails = () => {
 
 
     return (
-        <main className="mt-24">
+        <main>
             <div>
 
           
