@@ -1,6 +1,5 @@
 "use client"
 import { useState, useEffect } from "react";
-import useSWR from 'swr';
 import { CgProfile } from "react-icons/cg";
 import { MdHideSource } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -47,7 +46,7 @@ export default function Verify() {
       updater(1, "");
     } else {
       setCurrentPage(1);
-      updater(1, search);
+      updater(1, e.target.value);
     }
   }, 700);
 
@@ -104,17 +103,17 @@ export default function Verify() {
     }
   }
 
-  const debouncedLoadmorer = debounce(originalLoadmorer, 700);
+  const debouncedLoadmorer = debounce(originalLoadmorer, 1000);
 
   return (
     <div className="flex justify-center mt-24 h-screen">
-      <div className="flex flex-row w-screen justify-center mx-4 flex-wrap">
+      <div className="flex flex-row w-screen justify-center content-start mx-4 flex-wrap">
         <div className="relative mt-3 mr-5">
           <i className="absolute top-0 left-0">
             <AiOutlineSearch className="w-5 h-5 mt-2.5 ml-2 text-white-100 focus:text-white" />
           </i>
           <input
-            className="rounded-md pl-8 bg-black px-3.5 py-2 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white-100 sm:text-sm sm:leading-5 mb-4 bg-transparent border-[1px] border-[#5a5a5a]  w-[200px]"
+            className="rounded-md pl-8 bg-black px-3.5 py-2 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white-100 sm:text-sm sm:leading-5 mb-4 bg-transparent border-[1px] border-[#5a5a5a]  md:w-[200px] w-11/12"
             value={search}
             onChange={(e) => {
               inputg(e);
@@ -123,7 +122,7 @@ export default function Verify() {
           />
         </div>
 
-        <div className="flex flex-col mx-2w-screen sm:w-3/5">
+        <div className="flex flex-col mx-2 w-screen sm:w-3/5">
           {pages.map((item) => (
             <Page key={item.id} item={item} />
           ))}

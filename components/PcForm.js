@@ -42,7 +42,7 @@ export default function Pcform(props){
         <div className="flex  items-center justify-around bg-transparent text-white">
             {/* Left Column */}
             <div className="flex w-2/5 mx-5 flex-col flex-1 border-0">
-                <div className=" rounded-md border-0 mx-5 text-white shadow-sm ring-1 ring-inset ring-white/10">
+                <div className="  mx-5 rounded-md border-0text-white shadow-sm ring-1 ring-inset ring-white/10">
                     <h1 className="text-lg p-4 tracking-wide rounded-t-md font-bold border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 ">{props.br[0]}</h1>
 
 

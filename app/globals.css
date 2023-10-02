@@ -110,3 +110,27 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.59) 18.75%, rgba(0, 0, 0, 0.59) 51.56%, rgba(24, 24, 24, 0.59) 86.46%);
 }
 
+.land2bg{
+    
+    background: linear-gradient(1deg, #000 64.58%, rgba(0, 0, 0, 0.00) 98.99%), linear-gradient(231deg, #000 25.87%, #323232 34.48%, #434343 40.93%, #2D2D2D 47.98%, #080808 53.84%);
+}
+
+.land3bg{
+
+background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #505050 35.94%, #1C1C1C 61.98%, #000 100%);
+}
+
+.land3te{
+    background: linear-gradient(180deg, #8C8C8C 0%, #999999 24.22%, #999999 48.18%, rgba(255, 255, 255, 0.00) 129.16%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer {
+    background-image: url("/g14.svg");
+}
+
+.footerblack {
+    background: linear-gradient(269deg, rgba(0, 0, 0, 0.92) 34.77%, rgba(0, 0, 0, 0.84) 54.93%, rgba(0, 0, 0, 0.94) 69.21%);
+}
