@@ -34,8 +34,8 @@ export default function hero2() {
     return (
         <div >
 
-<section class=" m-5 mt-4 md:mt-0 grid grid-cols-1 py-1 px-1 rounded-md border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 md:ring-0 items-center justify-items-center gap-0 mt-1 md:grid-cols-2">
-    <div className="py-9 mr-4 md:h-auto md:w-auto land2bg  bg-opacity-10"> 
+<section class=" m-5  mt-4 md:mt-0 grid grid-cols-1 py-1 px-1 rounded-md border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 md:ring-0 items-center justify-items-center gap-0 mt-1 md:grid-cols-2">
+    <div className="pb-9 mr-4 pt-24 md:h-auto md:w-auto land2bg  bg-opacity-10"> 
     {/* <div className="land2bg w-1/2 h-[80vh] absolute -z-10 p-5"/> land2bg */}
     <Image src="/posts.webp" alt="My image" style={{ transform: 'rotate(-15.235deg)' }}  sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,

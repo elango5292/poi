@@ -134,3 +134,11 @@ background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #505050 35.94%, #1C1C1C
 .footerblack {
     background: linear-gradient(269deg, rgba(0, 0, 0, 0.92) 34.77%, rgba(0, 0, 0, 0.84) 54.93%, rgba(0, 0, 0, 0.94) 69.21%);
 }
+
+.implum {
+        mix-blend-mode: luminosity !important;
+}
+
+.polyimg{
+    mix-blend-mode: luminosity !important;
+}

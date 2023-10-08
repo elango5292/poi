@@ -66,7 +66,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-screen absolute top-0 left-0 resize-none relative overscroll-x-contain overflow-hidden h-screen"  ref={containerRef}>
+    <div className="w-screen absolute top-0 left-0 resize-none overscroll-x-contain overflow-hidden h-screen"  ref={containerRef}>
     
       <div className="md:h-screen  h-full opacity-95 z-10 w-screen absolute hero" />
      
@@ -86,14 +86,15 @@ export default function Home() {
       />
 
       <div className="w-screen flex flex-row flex-wrap h-full md:h-screen absolute">
-        <div className="md:left-[15%] text-center md:text-left mx-3 relative z-[40] w-full sm:w-1/4 absolute top-[12%] md:top-[25%]">
+        <div className="md:left-[15%] text-center md:text-left mx-3 z-[40] w-full sm:w-1/4 absolute top-[12%] md:top-[25%]">
           <h3 className="herotitle text-white mx-9 md:mx-auto text-5xl md:text-6xl not-italic font-black  md:font-semibold leading-[100%] md:tracking-[-3.2px] select-none">Welcome to proof of innovations</h3>
 
-          <p className="md:my-5 my-7 text-lg mx-9 md:mx-auto shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none">Create an immutable record of your ideas</p>
+          <p className="md:my-5 my-7 mx-9 md:mx-auto shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none">Create an immutable record of your ideas</p>
           <Buttonn variant="outline" className="select-none text-md px-14 py-6 shadow-sm hover:shadow-md hover:bg-zinc-950 hover:shadow-slate-50 shadow-white md:top-[5%]">
-            Start Posting {' '}<span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              <a href="/post" className="px-full py-full">   Start Posting {' '}<span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
             -&gt;
-</span>
+</span></a>
+
           </Buttonn>
         </div>
 

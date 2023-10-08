@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Hero from "./../components/heroj"
 
 import Hero2 from "./../components/hero2"
+import Hero3 from "./../components/hero3"
 import Footer from "./../components/footer"
 import React, { useRef } from 'react';
 import Image from 'next/image';
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero/>
         
 <Hero2/>
+<Hero3/>
 <Footer/>    
       
       </div>
