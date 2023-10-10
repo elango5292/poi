@@ -142,3 +142,208 @@ background: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #505050 35.94%, #1C1C1C
 .polyimg{
     mix-blend-mode: luminosity !important;
 }
+
+@keyframes bnblAnimation {
+    0%, 100% {
+      transform: scale(1) translateY(0) translateX(0);
+    }
+    50% {
+      transform: scale(1.1) translateY(-8px) translateX(-8px);
+    }
+  }
+  
+  .bnbl {
+    animation-name: bnblAnimation;
+    animation-duration: 8s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes polygonlAnimation {
+    0%, 100% {
+      transform: scale(1) translateY(0) translateX(0) rotate(24deg);
+    }
+    50% {
+      transform: scale(1.05) translateY(4px) translateX(-4px) rotate(15deg);
+    }
+  }
+  
+  .polygonl {
+    animation-name: polygonlAnimation;
+    animation-duration: 8s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes avalanchelAnimation {
+    0%, 100% {
+      transform: scale(1) translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.08) translateY(4px) translateX(4px) rotate(15deg);
+    }
+  }
+  
+  .avalanchel {
+    animation-name: avalanchelAnimation;
+    animation-duration: 8s;
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95); 
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes arbitrumlAnimation {
+    0%, 100% {
+      transform: scale(1) translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.02) translateY(-10px) translateX(4px) rotate(10deg);
+    }
+  }
+  
+  .arbitruml {
+    animation-name: arbitrumlAnimation;
+    animation-duration: 8s;
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95); 
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes ethereumlAnimation {
+    0%, 100% {
+      transform: scale(1) translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.07) translateY(-3px) translateX(-2px) rotate(1deg);
+    }
+  }
+  
+  .ethereuml {
+    animation-name: ethereumlAnimation;
+    animation-duration: 8s;
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes lightsAnimation {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(5deg) scale(1.5);
+    }
+  }
+  
+  .circleeth, .outereth, .innereth {
+    animation-name: lightsAnimation;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out; /* Adjust the easing as needed */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes anonlogoAnimation {
+    0%, 100% {
+      transform: translateY(-15px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(15px) rotate(-10deg);
+    }
+  }
+  
+  .anonlogo {
+    animation-name: anonlogoAnimation;
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out; /* Adjust the easing as needed */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes anonlogooAnimation {
+    0%, 100% {
+      transform: translateY(-15px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(15px) rotate(10deg);
+    }
+  }
+  
+  .anonlogoo {
+    animation-name: anonlogooAnimation;
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out; /* Adjust the easing as needed */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+
+  @keyframes lightAnimation {
+    0% {
+      height: 20%;
+      opacity: 1;
+    }
+    50% {
+      height: 100%;
+      opacity: 1;
+    }
+    100% {
+      height: 20%;
+      opacity: 1;
+    }
+  }
+  
+  .annonllight {
+    position: relative;
+    overflow: hidden;
+    animation-name: lightAnimation;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out; /* Adjust the easing as needed */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+
+  @keyframes lightAnimation {
+    0% {
+        top: 15%;
+        opacity: 0.8;
+  
+    }
+    50% {
+        top: 40%;
+        opacity: 1;
+    }
+    100% {
+        top: 10%;
+        opacity: 0.8;
+    }
+  }
+  
+  .gole {
+    overflow: hidden;
+    background: linear-gradient(180deg, #000 22.44%, #474747 100%);
+   
+    animation-name: lightAnimation;
+    animation-duration: 8s;
+    
+    animation-timing-function: ease-in-out; /* Adjust the easing as needed */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    transition: background 3s ease-in-out;
+  }
+
+  .gole1 {
+
+    background: linear-gradient(180deg, rgb(231, 35, 35) 22.44%, #d63434 100%);
+   opacity: 1;
+    animation-name: lightAnimation1;
+    animation-duration: 6s;
+    
+    animation-timing-function: ease-in-out; /* Adjust the easing as needed */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    transition: background 3s ease-in-out;
+  }

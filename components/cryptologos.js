@@ -6,85 +6,7 @@ import React, { useState,useEffect } from 'react';
 import anime from 'animejs';
 
 export default function(){
-    useEffect(()=>{
-        anime({
-            
-            duration: 4000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-            targets: '.bnbl',
-            scale: 1.1,
-            translateY:-8,
-            translateX:-8
-          });
-          anime({
-            
-            duration: 4000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-            targets: '.polygonl',
-            scale: 1.05,
-            translateY:4,
-            translateX:-4,
-            rotate:["24deg","15deg"]
-          });
-
-          anime({
-            
-            duration: 4000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-            targets: '.avalanchel',
-            scale: 1.08,
-            translateY:4,
-            translateX:4,
-            rotate:["0deg","15deg"]
-          });
-
-          anime({
-            
-            duration: 4000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-            targets: '.arbitruml',
-            scale: 1.02,
-            translateY:-10,
-            translateX:4,
-            rotate:["0deg","10deg"]
-          });
-
-          anime({
-            
-            duration: 4000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-            targets: '.ethereuml',
-            scale: 1.07,
-            translateY:-3,
-            translateX:-2,
-            rotate:["0deg","1deg"]
-          });
-
-          const lights = document.querySelectorAll('.circleeth, .outereth, .innereth');
-
-
-          anime({
-            
-            duration: 2000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-            targets: lights,
-            rotate:["0deg","5deg"],
-            scale: 1.5,
-          });
-    }
-        ,[])
+    
 
         useEffect(() => {
 
@@ -109,7 +31,7 @@ return(
             <div className="absolute w-[26rem] h-[26rem]"/>
        
        <div className="bnbl absolute top-[6.5rem] left-[4.5rem]">
-       <img src="/cryptologo/bnb.svg" className="w-[6.2rem] grayscale "/>
+       <img src="/cryptologo/bnb.svg" className="w-[6.2rem] "/>
        <svg  className="bnb w-[8.7rem] absolute top-0 " viewBox="-30 -6 3500 9000">
     <path d="m 1692.1,986.4 0.9,193.2 -281.2,165 v 330.8 l -163.3,95.7 -163.3,-95.7 V 1344.6 L 804,1179.6 V 986.4 l 164,-96.6 279.5,165.8 281.2,-165.8 164.1,96.6 z M 803.9,656.5 1247.6,394.9 1692.1,656.5 1528.8,753.1 1247.6,587.3 967.2,753.1 Z m 724.9,756.5 163.3,-96.6 v 193.2 l -163.3,95.7 z m -724.9,96.6 v -193.2 l 163.3,96.6 v 192.3 z m 280.4,302.6 163.3,96.6 164.1,-96.6 v 192.3 l -164.1,96.6 -163.3,-96.6 z m 561.6,-990.8 163.3,-96.6 164.1,96.6 v 192.3 l -164.1,96.6 V 918 Z m 163.3,756.6 0.9,-330 163.3,-96.6 v 524 l -444.5,260.7 v -193.2 z m -1123.3,-330 0.9,330 280.4,165 v 193.2 L 522.7,1675.5 v -524 z m 0,-330 v 192.3 L 522.6,1013.7 V 821.4 L 685.9,724.8 850,821.4 Z m 398.4,-96.6 163.3,-96.6 164.1,96.6 -164.1,96.6 z " fill="none" stroke="#7a7a7a" className="path z-90" stroke-width="50"/>
 
@@ -121,6 +43,7 @@ return(
 
     
   </svg>
+       
        </div>
        
        <div className="polygonl  absolute top-[14rem] rotate-[24deg] left-[5rem]">
