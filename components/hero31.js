@@ -3,10 +3,10 @@
 import Cryptologo from "./cryptologos"
 export default function hero3(){
 return(
-        <div id="31" className="flex md:right-9 flex-col relative h-[60vh] md:h-screen w-screen md:w-1/4">
+        <div id="31" className="boxcryptologo overflow-hidden flex  flex-col relative h-[360px] md:h-[425px] mx-auto md:w-[514px] md:max-w-[514px] w-[90%] max-w-[340px] md:ml-9 md:p-12">
     <Cryptologo />
-    <div className="relative z-90 md:top-[60vh] top-[50vh]">
-    <p className="px-4 w-[90vw] md:w-[20vw] mx-auto m-1 mr-4 land3te text-3xl text-center font-dark tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-black">
+    <div className="relative z-90 md:top-[45vh] md:-left-[2.5em]  px-auto top-[75%] md:top-[80%]">
+    <p className=" w-[240px] md:w-[292px] mx-auto md:mr-4 text-[20px] md:text-[1.5625em] undercryptologo">
     Record on blockchains you already know
     </p></div>
     </div>  

@@ -27,9 +27,9 @@ module.exports = {
             to: { height: 0 },
           },
           "hero-light-keyframe-1": {
-              "0%":{opacity: "30%"},
-              "50%":{opacity: "50%"},
-              "100%":{opacity: "30%"},
+              "0%":{opacity: "100%"},
+              "50%":{opacity: "40%"},
+              "100%":{opacity: "100%"},
   
             },
             "hero-light-keyframe-2": {
