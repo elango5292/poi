@@ -1,0 +1,8 @@
+.para{
+    font-weight: 500;
+line-height: 143.523%; 
+    background: linear-gradient(180deg, #D9D9D9 0%, rgba(155, 155, 155, 0.59) 50%, #D1D1D1 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

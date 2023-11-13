@@ -1,13 +1,34 @@
 "use client"
 
-// import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import Heroj from "./../components/heroj"
 
-import Herozag from "./../components/herozag"
-import Herovid from "./../components/herovid"
+
+
+const Herozag = dynamic(() =>
+    import("./../components/herozag"), {
+    loading: () => <div className="flex items-center w-full mx-auto justify-center h-20">
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-md bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+    </div>,
+}
+)
+
+const Herovid = dynamic(() =>
+    import("./../components/herovid"), {
+    loading: () => <div className="flex items-center w-full mx-auto justify-center h-20">
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-md bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+    </div>,
+}
+)
+
 import Herofaq from "./../components/herofaq"
 import Hero3 from "./../components/hero3"
 import Footer from "./../components/footer"
+
 import React, { useState,useEffect } from 'react';
 
 
@@ -30,13 +51,14 @@ export default function Home() {
 
     return (
       <div className=" mt-9 overflow-x-hidden">
-        <Heroj w={width}/>
+        <Heroj/>
         <Hero3 w={width}/>
+
         <Herozag/>
         
-        <Herovid w={width}/>
+        <Herovid />
         <Herofaq/> 
-<Footer/>    
+        <Footer/>
       
       </div>
     );

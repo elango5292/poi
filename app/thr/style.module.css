@@ -1,0 +1,18 @@
+.detailcontainer{
+    width: 773px;
+    height: 306px;
+    flex-shrink: 0;
+    border-radius: 21px;
+border: 1px solid #7D7D7D;
+background: linear-gradient(181deg, #090909 0.55%, #020202 38.54%);
+border-image: linear-gradient(
+    to top right, /* Change the direction here */
+    rgba(46, 46, 46, 0.42),
+    rgba(81, 81, 81, 1),
+    rgba(24, 24, 24, 0.78)
+  );
+  border-image-slice: 1;
+  border-image-width: 1;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+}

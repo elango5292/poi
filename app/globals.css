@@ -39,8 +39,8 @@
   
     .circle {
       position: relative;
-      width: 17px; /* Adjust the width and height as needed */
-      height: 17px;
+      width: 10px; /* Adjust the width and height as needed */
+      height: 10px;
       border-radius: 50%;
       background-color: #ffffff; /* Adjust the background color as needed */
       margin: 0px; /* Add margin to center the circle */
@@ -58,26 +58,7 @@
       border: 2px solid rgb(255, 255, 255); /* Adjust the border color and thickness as needed */
     }
     
-    .circleCompleted {
-      position: relative;
-      width: 17px; /* Adjust the width and height as needed */
-      height: 17px;
-      border-radius: 50%;
-      background-color: #81C784; /* Adjust the background color as needed */
-      margin: 0px; /* Add margin to center the circle */
-    }
   
-    .circleCompleted::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Center the inner circle */
-      width: 23px; 
-      height: 23px;
-      border-radius: 50%;
-      border: 2px solid #ffffff; /* Adjust the border color and thickness as needed */
-    }
   
   .linee{
   
@@ -684,3 +665,29 @@ line-height: normal;
 letter-spacing: 0.15px;
     
 }
+
+.image-container {
+    background-image: url("/g14.svg");
+    background-size: cover;
+  }
+  
+  ::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 24 24"><path fill="white" d="M0,14H4v4H0v-4Zm6,4h5v-4H6v4ZM0,12H4v-4H0v4Zm6,12h5v-4H6v4Zm7-12h5v-4h-5v4Zm-7,0h5v-4H6v4ZM0,24H4v-4H0v-4ZM20,12h4v-4h-4v4Zm-7,12h5v-4h-5v4Zm7,0h4v-4h-4v4Zm1-22h-3V0h-2V2H8V0h-2V2H3C1.35,2,0,3.35,0,5v1H24v-1c0-1.65-1.35-3-3-3Zm-1,16h4v-4h-4v4Zm-7,0h5v-4h-5v4Z"/></svg>')
+    ;
+  }
+
+  .detailcontainer {
+  
+flex-shrink: 0;
+  border: double 1px transparent;
+  border-radius: 21px;
+  background-image: linear-gradient(181deg, #090909 0.55%, #020202 38.54%), linear-gradient(to bottom, #7D7D7D, #000000);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  
+  }
+
+  .publishtooltipstyle{
+    border: 1px solid #7c7c7c;
+background-color: "linear-gradient(86deg, #000 3.13%, #070707 53.51%, #000 97.05%)" !important;
+  }

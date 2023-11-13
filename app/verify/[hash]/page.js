@@ -8,7 +8,8 @@ import { CgProfile } from "react-icons/cg";
 
 import getTime from '../../../modules/getime';
 import networks from "../../../lib/networks"
-
+import Footer from "./../../../components/footer"
+import Postdetail from "./../../../components/postdetail"
 
 export default function verify() {
     const pathname = useParams();
@@ -100,8 +101,9 @@ export default function verify() {
 
 
     return (
-        <div className="max-w-3xl mt-24 mx-auto p-4">
-            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-white lg:mb-6 lg:text-4xl">
+        <div>
+        <div className="max-w-3xl mt-24 min-h-[80vh] mx-auto p-4">
+            <h1 className="mb-4 text-3xl  font-extrabold leading-tight text-white lg:mb-6 lg:text-4xl">
                 {words[4]}
             </h1>
 
@@ -125,6 +127,9 @@ export default function verify() {
             </div>
 
         </div>
-
+        <div className="mb-24">
+        <Postdetail/></div>
+        <Footer/>
+        </div>
     );
 }

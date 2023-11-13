@@ -5,6 +5,7 @@ import { MdHideSource } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 import Link from "next/link";
 import debounce from 'lodash/debounce';
+import Footer from "./../../components/footer"
 
 function Page({ item }) {
   return (
@@ -106,8 +107,9 @@ export default function Verify() {
   const debouncedLoadmorer = debounce(originalLoadmorer, 1000);
 
   return (
+    <div >
     <div className="flex justify-center mt-24 h-screen">
-      <div className="flex flex-row w-screen justify-center content-start mx-4 flex-wrap">
+      <div className="flex flex-row w-screen min-h-screen justify-center content-start mx-4 flex-wrap">
         <div className="relative mt-3 mr-5">
           <i className="absolute top-0 left-0">
             <AiOutlineSearch className="w-5 h-5 mt-2.5 ml-2 text-white-100 focus:text-white" />
@@ -137,7 +139,11 @@ export default function Verify() {
             )
           )}
         </div>
+        <Footer/> 
       </div>
+      
+    </div>
+   
     </div>
   );
 }

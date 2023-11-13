@@ -87,7 +87,7 @@ const Desktop3 = ({ w }) => {
 
 
     return (
-        <div className="table-container w-[340px] h-[464px] mt-[35px] md:mt-[0px] mx-auto md:h-[425px] md:w-[667px] flex-col items-end">
+        <div className="table-container w-[340px] min-h-[464px] md:min-h-[46px] mt-[65px] md:mt-[0px] mx-auto md:h-[425px] md:w-[667px] flex-col items-end">
 
             <div className="flex flex-row items-center ml-[15px] mt-[30px] md:ml-6 md:mt-9 md:mb-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">

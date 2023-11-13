@@ -4,7 +4,7 @@ import { useEffect } from "react";
 // import React from "react";
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-
+import Footer from "./../../components/footer"
 
 import CryptoJS from "crypto-js";
 const sha256 = require("sha256");
@@ -463,29 +463,29 @@ export default function Home() {
 
 
                         <div className="flex w-auto justify-center">
-                            <Stepper
+                        <Stepper
                                 activeStep={activeStep}
-                                lineClassName="bg-white/50 "
-                                activeLineClassName="bg-white "
+                                lineClassName="bg-white/50  "
+                                activeLineClassName="bg-white"
                                 className="justify-between m-5 stepper-container"
                             >
                                 <Step
                                     onClick={() => setActiveStep(0)}
-                                    completedClassName=" text-white bg-green-300"
-                                    className="h-5 w-5 bg-gray-100"
+                                    completedClassName=" bg-white"
+                                    className="h-[15px] w-[15px] bg-[#A5A5A5]"
                                     activeClassName="circle bg-indigo-400"
                                 />
                                 <Step
                                     onClick={() => setActiveStep(1)}
-                                    completedClassName=" text-white bg-green-300"
-                                    className={posted ? ("h-5 w-5 bg-green-300") : ("h-5 w-5 bg-gray-100")}
-                                    activeClassName={posted ? ("circle") : ("circleCompleted")}
+                                    completedClassName=" bg-white"
+                                    className="h-[15px] w-[15px] bg-[#A5A5A5]"
+                                    activeClassName="circle"
                                 />
                                 <Step
                                     onClick={() => setActiveStep(2)}
-                                    completedClassName=" text-white bg-green-300"
-                                    className={published ? ("h-5 w-5 bg-green-300") : ("h-5 w-5 bg-gray-100")}
-                                    activeClassName={published ? ("circle") : ("circleCompleted")}
+                                    completedClassName="bg-white"
+                                    className="h-[15px] w-[15px] bg-[#A5A5A5]"
+                                    activeClassName="circle"
                                 />
                             </Stepper>
                         </div>
@@ -546,6 +546,7 @@ export default function Home() {
                 </div>
             </div>
             )}
+           <Footer/>
         </main>
     );
 }
