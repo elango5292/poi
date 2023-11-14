@@ -1,15 +1,12 @@
-"use client"
 
-import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { Float, OrbitControls } from '@react-three/drei';
-import debounce from 'lodash/debounce';
-import { motion } from 'framer-motion';
 
-export default function Home({w}) {
+
+export default function Home() {
   
 
     return (

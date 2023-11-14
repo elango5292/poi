@@ -1,4 +1,3 @@
-"use client"
 
 import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
@@ -10,7 +9,7 @@ import debounce from 'lodash/debounce';
 import { motion } from 'framer-motion';
 
 
-export default function Home({w}) {
+export default function Home() {
   
 
   return (
