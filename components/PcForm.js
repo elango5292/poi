@@ -121,7 +121,7 @@ export default function Pcform(props){
         <div className='flex w-auto items-end justify-end pb-2'>
 
             <div
-                className="group flex w-fit m-3 rounded-lg border border-transparent transition-colors hover:border-neutral-700 hover:cursor-pointer "
+                className="group flex w-fit mx-3 my-7 rounded-lg border border-transparent transition-colors hover:border-neutral-700 hover:cursor-pointer "
                 onClick={handleContinue} disabled={props.br[9]}
            >
                 <h2 className={`px-4 py-2 text-md `}>

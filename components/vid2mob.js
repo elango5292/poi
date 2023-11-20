@@ -27,7 +27,7 @@ function Mob(){
 
 export default function () {
     return (
-        <div>
+        <div className='mt-[40px]'>
            
       <div className="flex md:hidden">
         <Mob/>

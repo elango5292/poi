@@ -7,7 +7,7 @@ function Mob(){
     return(
         <div className="flex mt-[79px] flex-col w-[90%]  md:w-[414px]">
 
-            <div  className=" mx-auto w-[344px] h-[auto]">
+            <div  className=" mx-auto w-[250px] h-[auto]">
             <Image
       src="/herolok.webp"
       width={344}

@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { MdHideSource } from 'react-icons/md';
 import Link from 'next/link'
 import { CgProfile } from "react-icons/cg";
-export default function foras({ words, handleverify, time, handleCopy, isCopied,chain }) {
+export default function foras({ words, ph,handleverify, time, handleCopy, isCopied,chain }) {
     return (
         <div className="flex overflow-hidden mt-[40px] flex-col mx-auto">
             <div className="w-[300px] mx-auto md:w-[524px] h-[1px] bg-gray-700" />
@@ -13,7 +13,7 @@ export default function foras({ words, handleverify, time, handleCopy, isCopied,
             <div className="flex flex-col  mx-auto md:mx-[0px] px-[13px] py-[21px] md:px-[37px] md:py-[32px] w-[300px] md:w-[522px] md:h-[242px] h-[290px] flex-shrink-0 border-solid border-[1px] border-gray-700 bg-[#060606]" >
                 <div className="flex flex-col md:flex-row">
                     <div>
-                        <a href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}`} target="_blank" className="flex flex-row items-center">
+                        <a href={`/verify/${words[1]}/?p=${encodeURIComponent(words[2])}&chain=${chain}&ph=${ph}`} target="_blank" className="flex flex-row items-center">
                             <p className="md:max-w-[233px] max-w-[183px] h-auto truncate md:text-[18px] text-[14px] text-ellipsis overflow-hidden break-words text-[white] font-medium">
                             {words[4]}
                             </p>

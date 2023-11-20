@@ -26,6 +26,6 @@ const Mob = dynamic(() =>
 
 export default function () {
     return (
-        <div><div className="hidden md:flex"><Pc/></div> <div className="flex md:hidden"><Mob/></div></div>
+        <div ><div className="hidden  md:flex"><Pc/></div> <div className="flex w-full ml-[5%] md:hidden"><Mob/></div></div>
     )
 }

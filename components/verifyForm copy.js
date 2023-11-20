@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { IoCheckmarkDoneCircle, IoCloseCircle } from "react-icons/io5";
 const sha256 = require("sha256");
-
-export default function validation({pwords}){
+import worder from "../../lib/postwords"
+const validation = (props) => {
 
     const [aPassword, setApassword] = useState('');
     const [aName, setAname] = useState("");
@@ -22,6 +22,7 @@ export default function validation({pwords}){
 
     const [idl, setIdl] = useState(false);
     const [vlevel, setvlevel] = useState(0);
+
     const handleInputChange = (event) => {
         const { id, value } = event.target;
 
@@ -74,13 +75,13 @@ export default function validation({pwords}){
 
     useEffect(() => {
         setvlevel(0)
-        if (namesha === pwords.words[1]) {
+        if (namesha === props.username) {
             setvlevel(vlevel + 1)
         }
-        if (datesha === pwords.words[2]) {
+        if (datesha === props.userdob) {
             setvlevel(vlevel + 1)
         }
-        if (idsha === pwords.words[3]) {
+        if (idsha === props.userid) {
             setvlevel(vlevel + 1)
         }
     }, [aId, aDate, aName, aPassword]);
@@ -119,12 +120,12 @@ export default function validation({pwords}){
             <div className='order-2 md:order-1  md:row-span-2 '>
                 <div>
                     <label htmlFor="name" className="my-3 font-extralight text-[#D9D9D9] text-sm md:font-light">Name:</label>
-                    {(pwords.words[0] === "1x") ? <div className="flex items-center"> <input
+                    {(props.anon === "1x") ? <div className="flex items-center"> <input
                         type="text"
                         id="name"
                         className="my-2 flex w-full md:w-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white/90 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset   sm:text-sm sm:leading-6 mb-4"
 
-                        value={pwords.words[1]}
+                        value={props.username}
                         disabled={true}
                         onChange={handleInputChange}
 
@@ -141,7 +142,7 @@ export default function validation({pwords}){
 
                             />  {aName != "" && (namel ?
                                 <CgSpinner className="inline m-1 animate-spin h-6 w-6" /> :
-                                (namesha === pwords.words[1]) ?
+                                (namesha === props.username) ?
                                     <IoCheckmarkDoneCircle className=" text-[#D9D9D9] inline m-1 h-6 w-6" /> :
                                     <IoCloseCircle className="inline text-[#D9D9D9] m-1 h-6 w-6" />
                             )}
@@ -162,7 +163,7 @@ export default function validation({pwords}){
                         />
                         {aDate != "" && (datel ?
                             <CgSpinner className="inline m-1 animate-spin h-6 w-6" /> :
-                            (datesha === pwords.words[2]) ?
+                            (datesha === props.userdob) ?
                                 <IoCheckmarkDoneCircle className=" text-[#D9D9D9] inline m-1 h-6 w-6" /> :
                                 <IoCloseCircle className="inline text-[#D9D9D9]  m-1 h-6 w-6" />)
                         }
@@ -181,7 +182,7 @@ export default function validation({pwords}){
                         />
                         {aId != "" && (idl ?
                             <CgSpinner className="inline m-1 animate-spin h-6 w-6" /> :
-                            (idsha === pwords.words[3]) ?
+                            (idsha === props.userid) ?
                                 <IoCheckmarkDoneCircle className=" text-[#D9D9D9] inline m-1 h-6 w-6" /> :
                                 <IoCloseCircle className="inline text-[#D9D9D9] m-1 h-6 w-6" />)
                         }
@@ -205,6 +206,7 @@ export default function validation({pwords}){
 };
 
 
+export default validation;
 
 
 {/* <div className="flex flex-col md:flex-row">
@@ -212,12 +214,12 @@ export default function validation({pwords}){
   <div className="flex flex-col">
 <div>
       <label htmlFor="name" className="my-3">Name:</label>
-        {(pwords.words[0] ==="1x")? <div className="flex items-center"> <input
+        {(props.anon ==="1x")? <div className="flex items-center"> <input
           type="text"
           id="name"
           className="my-2 flex w-full md:w-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white/90 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset   sm:text-sm sm:leading-6 mb-4"
           
-          value={pwords.words[1]}
+          value={props.username}
           disabled= {true}
         onChange={handleInputChange}
 
@@ -234,7 +236,7 @@ export default function validation({pwords}){
 
         />  {aName!=""&&(namel ?
             <CgSpinner className="inline m-1 animate-spin h-6 w-6" />:
-            (namesha ===pwords.words[1])?
+            (namesha ===props.username)?
             <IoCheckmarkDoneCircle className=" text-[#D9D9D9] inline m-1 h-6 w-6"/>:
     <IoCloseCircle className="inline text-[#D9D9D9] m-1 h-6 w-6"/>
         )}

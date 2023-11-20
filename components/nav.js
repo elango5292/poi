@@ -35,7 +35,6 @@ export default function Example() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-    console.log(path);
     return (
         <Disclosure
             as="nav"

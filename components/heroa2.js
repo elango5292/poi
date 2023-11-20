@@ -6,6 +6,17 @@ import Link from "next/link";
 import humanTime from "../lib/humantime"
 
 function Herotablepc({ dat }) {
+  const logo_styles={
+    11155111: "h-[13px] w-auto",
+      80001: "h-[18px] w-auto",
+      97: "h-[18px] w-auto",
+      43113:"w-auto h-[22px] grayscale",
+      42161: "h-[18px] w-auto",
+      43114:"w-auto h-[22px] grayscale",
+      137: "h-[18px] w-auto",
+      56: "h-[18px] w-auto",
+      1: "h-[13px] w-auto",
+  }
     return (
         <table className="custom-table w-full ">
             <tr className="text-left htr ">
@@ -22,9 +33,10 @@ function Herotablepc({ dat }) {
                     </td>
                     <td className="author-cell htd text-[0.8em] md:truncate md:max-w-[85px] p-2">{item.author}</td>
                     <td className="date-cell htd text-[0.8em] p-2">{humanTime(item.date)}</td>
-                    <td className="cain-cell htd p-2 pl-2"><img src={`/cryptologo/${networks(item.chain, "logo")}`} alt="Your SVG" className="h-[28px] grayscale" /></td>
+                    <td className="cain-cell htd p-2 pl-2"><img src={`/cryptologo/${networks(item.chain, "logotab")}`} alt="Chain logo" name={networks(item.chain, "name")} className={logo_styles[item.chain]} /></td>
                 </tr>
             ))}
+            {/* ${networks(item.chain, "logo")} */}
         </table>
 
     )
@@ -44,7 +56,7 @@ function Herotablemob({ dat }) {
    <div className="flex flex-row mobtabletitle items-center">
        <p className="mobtableauth mr-[11px]">{item.author}</p>
        <p className="mobtabledate mr-[14px]">{humanTime(item.date)}</p>
-       <img src={`/cryptologo/${networks(item.chain, "logo")}`} alt="Polygon" className="h-[13px] w-auto grayscale" />
+       <img src={`/cryptologo/${networks(item.chain, "logo")}`} alt={item.chain+"_logo"} height={"1px"} width={"5px"} className="h-[13px] w-auto grayscale" />
    </div>
    <div className="w-[302px] mt-[21px] h-[1px] bg-[#2E2E2E]" />
 </div>
