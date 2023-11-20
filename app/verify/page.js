@@ -1,8 +1,6 @@
 'use client'
-import React, { useState } from "react";
-import { useEffect } from "react";
-import CryptoJS from "crypto-js";
-import Verifyformtop from "../../components/verifyformtopcomponent"
+import { useState,useEffect } from "react";
+
 import dynamic from 'next/dynamic'
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -14,7 +12,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -34,7 +31,18 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
+import CryptoJS from "crypto-js";
+import worder from "../../lib/postwords"
 
+const Verifyformtop = dynamic(() =>
+    import("../../components/verifyformtopcomponent"), {
+    loading: () => <div className="flex items-center justify-center h-20">
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-md bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+    </div>,
+}
+)
 
 const Verifyform = dynamic(() =>
     import("../../components/verifyForm"), {
@@ -65,11 +73,21 @@ const TransactionDetails = () => {
 
     const [up,setup]=useState(1);
     const [words, setWords] = useState("");
+    const [pwords, setPwords] = useState("");
+    const [ph, setph] = useState("");
         const [time, setTime] = useState("Sun, 01 Jan 2023 01:00:00 GMT");
-        const [chain, setchain] = useState("1");
-    const [gwords, setGwords] = useState("");
+        const [chaing, setchaing] = useState("1");
 function handlebac(){
     setup((prev)=>1)
+}
+function setpw(postwords){
+    setPwords((prev)=>postwords)
+}
+async function postwordcollector(hash,passw,chain){
+    let postwords = await worder(hash,passw,chaing)
+    setpw(postwords)
+    console.log("here",postwords)
+
 }
     function Verify2() {
         return (
@@ -94,11 +112,10 @@ function handlebac(){
   </span>
                         {' '}Back
 </h2>
-{/* title={} author={} anon={} datew={} */}
-                </div><Verifyformtop  words={words} chain={chain}/></div>
+                </div><Verifyformtop  words={words} pwords={pwords} chain={chaing}/></div>
                 <div className="md:mt-[40px] mt-[30px]">
 
-                <Verifyform username={words[3]} userid={words[7]} userdob={words[6]} anon={words[0]} /></div>
+                <Verifyform pwords = {pwords}  /></div>
                 <div className="md:mt-[85px] mx-auto mt-[150px]">
                   <p className="text-[12px] font-light px-5 text-[#6D6D6D] md:px-5">*Note: Successfully verifying this interface allows authors to assert their authorship in the event of a dispute. Authors can do this by entering their identity password and confirming their authorship. The system then attempts to decrypt the encrypted official ID number, name, and date of birth. It’s important to remember that all sensitive information, including the ID number and date of birth, remains encrypted and private, never being disclosed to the public. The author verification process identifies individuals based on their knowledge of the identity password, which subsequently reveals the official ID number. This ID number, issued by any official authority, can then be cross-referenced with the name and date of birth on the encrypted data to confirm the author’s identity. The ID can provided by any official body, and authorship is established as it corresponds with the author’s date of birth and name, thereby enhancing the robustness of the verification process in case of a dispute. Alternatively, authorship can also be established by simply holding the private key of the address that published the post.</p>
                 </div>
@@ -107,16 +124,13 @@ function handlebac(){
     }
 
     function Verify1() {
-        const [transactionDetails, setTransactionDetails] = useState(null);
+       
         const [transactionHash, setTransactionHash] = useState("");
-        
+        const [chain, setchain] = useState("1");
         const [showPopup, setShowPopup] = useState(false);
-        const [showPopup2, setShowPopup2] = useState(false);
-        const [transactionData, settransactionData] = useState("")
-        
         const [rpc, setrpc] = useState("");
         const [isCopied, setIsCopied] = useState(false);
-
+        
         const handleCopy = () => {
             setIsCopied(true);
             setTimeout(() => {
@@ -194,13 +208,11 @@ function handlebac(){
 
         }
 
-       
-
-        // 0x57feca6354cf32ad64b208a1dcb5a655557789e2a05c5b47d645b3f2b4a84c5f
-        // 0xbeebb8a6d124b682fd96f73ef3aacd5e2b7ae74b90e5191f8acaae7aee02edef
         async function handleCollect() {
-            const recipt = await getTransactionData(transactionHash)
-            settransactionData(recipt.result.input)
+            const lasth = transactionHash
+        
+            const recipt = await getTransactionData(lasth)
+            
             const blockNum = recipt.result.blockNumber
             getTime(blockNum)
             const cleanedHexString = recipt.result.input?.slice(2)
@@ -209,7 +221,10 @@ function handlebac(){
             const wordsli = STRtransaction.split("<>");
             
             setWords((prev)=>wordsli)
-            console.log(words)
+            setph((prev)=>lasth)
+            setchaing((prev)=>chain)
+
+      
       
 
 
@@ -217,8 +232,10 @@ function handlebac(){
 
 
         function handleverify() {
-            setShowPopup2(true);
+           
             setup((prev)=>2);
+         
+            postwordcollector(words[1],words[2],chain)
 
 
         }
@@ -232,7 +249,7 @@ function handlebac(){
 
         const FormSchema = z.object({
             username: z.string().min(2, {
-                message: "Username must be at least 2 characters.",
+                message: "Wrong Publish hash",
             }),
         })
 
@@ -241,10 +258,10 @@ function handlebac(){
         })
 
 
-        function onSubmit(data) {
-            handleCollect()
-            setShowPopup(true)
+        function onValues(e) {
+            setTransactionHash(e.target.value)
         }
+
         return (
             <div className="min-h-screen w-[98vw] overflow-hidden ">
                 <div className="min-h-[90vh] mx-auto flex flex-col">
@@ -273,7 +290,7 @@ function handlebac(){
                                         <FormItem>
                                             <FormLabel className="text-[12px]">Publish Hash</FormLabel>
                                             <FormControl>
-                                                <Input className="bg-black  border-gray-700 text-gray-300" placeholder="0x1231..." {...field} value={transactionHash} onChange={(e) => setTransactionHash(e.target.value)} />
+                                                <Input className="bg-black  border-gray-700 text-gray-300" placeholder="0x1231..." {...field}  value={transactionHash} onChange={(e) => onValues(e)} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -301,7 +318,7 @@ function handlebac(){
                                         </SelectContent>
                                     </Select>
 
-                                    <Button onClick={handleSubmit} className="mx-2  bg-[#D9D9D9] text-black">Search</Button>
+                                    <Button type="submit" onClick={(e)=>{handleSubmit(e)}} className="mx-2  bg-[#D9D9D9] text-black">Search</Button>
 
                                 </div>
                             </form>
@@ -315,19 +332,9 @@ function handlebac(){
 
                     
 
-                    {(showPopup | true) && (
-                       <Verifyform1 words={words} time={time} handleverify={handleverify} handleCopy={handleCopy} isCopied={isCopied} chain={chain}/>
+                    {(showPopup) && (
+                       <Verifyform1 words={words} ph={ph} time={time} handleverify={handleverify} handleCopy={handleCopy} isCopied={isCopied} chain={chaing}/>
                     )}
-
-
-                    {/* {(showPopup2) && (
-                        <div className="mx-4 mt-9 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 xl:w-1/3 mb-4">
-                            <Verifyform id="verifyform" username={words[3]} userid={words[7]} userdob={words[6]} anon={words[0]} />
-                        </div>
-                    )
-
-
-                    } */}
 
                 </div>
             </div>)
@@ -347,45 +354,3 @@ function handlebac(){
 
 export default TransactionDetails;
 
-
-// <div
-// className=" mx-4 sm:mx-8 md:mx-auto md:w-2/3 lg:w-1/2 rounded-md border-0 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 mb-4">
-
-// <div className="card bg-base-100 shadow-xl">
-//     <div className="card-body">
-
-//         <div className="text-left">
-//             <div className="font-small text-gray-500">
-//                 {time}
-//             </div>
-
-//             <a href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}`} target="_blank">
-//                 <b className="text-white-700 my-5">
-//                     {words[4]} <LuExternalLink className="inline" />
-//                 </b>
-//             </a>
-//             {/* 0x643f6edee82b7e98d682a0b9ede3ab1dd4676fa199ee2a383a3ccabe0f096e69 */}
-
-//             <div className="font-small text-sm text-white my-2 flex items-center">
-//                 {(words[0] === "1x") ?
-//                     <p>
-//                         <CgProfile className="mx-2 inline" />{words[3]}
-//                     </p> : <p><MdHideSource className="mx-2 inline" /> "Annonymous"</p>}
-//             </div>
-
-
-//             {words[4] && (<div className="rounded-lg border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 flex items-center justify-center py-3 px-4 mt-5">
-
-//                 <Link className="text-[12px] md:text-[14px] text-white p-5 hover:cursor-pointer" onClick={handleverify} href="#enteryourdetails">
-//                     Verify Ownership
-
-//                 </Link> </div>)}
-//         </div>
-
-
-//     </div>
-// </div>
-
-
-
-// </div>

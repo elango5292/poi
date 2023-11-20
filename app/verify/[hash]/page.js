@@ -17,11 +17,14 @@ export default function verify() {
 
     const passw = decodeURIComponent(prms.get('p'));
     const chain = prms.get('chain');
+    const publishhash = prms.get('ph');
 
 
     const [postdate, setpostdate] = useState("");
     const [words, setWords] = useState("");
     const [rpc, setrpc] = useState("");
+    const [addressdetail, setaddressdetail] = useState("");
+
 
 
     useEffect(() => {
@@ -61,11 +64,13 @@ export default function verify() {
                 let decData = CryptoJS.enc.Hex.parse(cleanedHexString).toString(CryptoJS.enc.Utf8)
                 let bytes = CryptoJS.AES.decrypt(decData, passw).toString(CryptoJS.enc.Utf8)
 
-                console.log("bytes", bytes);
+
+                setaddressdetail(reciept.result.from)
+
 
                 const wordsli = bytes.split("<>");
                 deco(wordsli);
-                console.log(wordsli);
+
 
 
             } else {
@@ -102,34 +107,34 @@ export default function verify() {
 
     return (
         <div>
-        <div className="max-w-3xl mt-24 min-h-[80vh] mx-auto p-4">
-            <h1 className="mb-4 text-3xl  font-extrabold leading-tight text-white lg:mb-6 lg:text-4xl">
-                {words[4]}
-            </h1>
+            <div className="max-w-3xl mt-24 min-h-[70vh] mx-auto p-4">
+                <h1 className="mb-4 text-3xl  font-extrabold leading-tight text-white lg:mb-6 lg:text-4xl">
+                    {words[4]}
+                </h1>
 
-            <div className="text-white">
-                <p rel="author" className="text-xl font-bold">
-                    {(words[0] === "1x") ? <p>
-                        <CgProfile className="mx-2 inline" />{words[1]}
-                    </p> : <p><MdHideSource className="inline mx-2" /> "Annonymous"</p>}
-                </p>
+                <div className="text-white">
+                    <p rel="author" className="text-xl font-bold">
+                        {(words[0] === "1x") ? <p>
+                            <CgProfile className="mx-2 inline" />{words[1]}
+                        </p> : <p><MdHideSource className="inline mx-2" /> "Annonymous"</p>}
+                    </p>
 
 
-                <p className="text-base mx-2 font-light text-gray-400">
-                    {postdate}
-                </p>
+                    <p className="text-base mx-2 font-light text-gray-400">
+                        {postdate}
+                    </p>
+                </div>
+
+                <div className="mt-8 text-white">
+                    <p style={{ whiteSpace: 'pre-line' }}>
+                        {words[6]}
+                    </p>
+                </div>
+
             </div>
-
-            <div className="mt-8 text-white">
-                <p style={{ whiteSpace: 'pre-line' }}>
-                    {words[6]}
-                </p>
-            </div>
-
-        </div>
-        <div className="mb-24">
-        <Postdetail/></div>
-        <Footer/>
+            <div className="mb-[180px]">
+                <Postdetail pubhashdetail={publishhash} posthashdetail={pathname.hash} chain={chain} addressdetail={addressdetail} datedetail={postdate} authordetail={(words[0] === "1x") ? words[1] : "Annonymous"} /></div>
+            <Footer />
         </div>
     );
 }

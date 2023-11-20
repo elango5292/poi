@@ -6,11 +6,12 @@ import Footer from "./../../components/footer"
 
 export default function verify() {
   return(  <div>  <div class="min-h-[70vh] mt-[83px] flex flex-col w-[90vw] md:w-[606px] mx-auto">
-  <h1 class="md:text-[35px] text-[25px] md:text-center text-white font-bold mb-4 md:mb-8">
+  <h1 class="md:text-[35px] text-[25px] md:text-center text-[#DADADA] font-bold mb-4 md:mb-8">
   What is it?
   </h1>
   <p className={`text-white md:text-center  ${style.para}`}>
-  POI is a platform that records and protects your ideas and innovations using blockchain technology. With POI, you can securely share your ideas with others without worrying about losing ownership. The blockchain ensures that your ideas are immutably recorded, giving you peace of mind when collaborating, seeking feedback, or publishing your innovations. Your ideas remain yours, safeguarded by our platform.
+  POI is a platform where you can record your ideas and innovations using blockchain technology. By creating posts on POI, you can securely share your ideas with others without worrying about losing ownership. The blockchain ensures that your ideas are immutably recorded, giving you peace of mind when collaborating, seeking feedback, or publishing your innovations. Your ideas remain yours, safeguarded by blockchain.
+ 
   </p>
   <Image
       src="/ccube.webp"

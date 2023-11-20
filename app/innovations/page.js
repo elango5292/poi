@@ -124,7 +124,7 @@ export default function Verify() {
           />
         </div>
 
-        <div className="flex flex-col mx-2 w-screen sm:w-3/5">
+        <div className="flex flex-col min-h-[65vh] mx-2 w-screen sm:w-3/5">
           {pages.map((item) => (
             <Page key={item.id} item={item} />
           ))}
@@ -139,7 +139,9 @@ export default function Verify() {
             )
           )}
         </div>
+  
         <Footer/> 
+       
       </div>
       
     </div>

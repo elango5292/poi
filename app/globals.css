@@ -62,7 +62,7 @@
   
   .linee{
   
-      background: linear-gradient(148deg, #FFF 16.67%, rgba(255, 255, 255, 0.00) 100%);
+      background: linear-gradient(148deg, #DADADA 16.67%, rgba(255, 255, 255, 0.00) 100%);
   }
   
   #my-title-input[data-default-value]::before {
@@ -547,7 +547,7 @@ border-image: linear-gradient(
     text-align: center;
 font-weight: 400;
 line-height: 131.523%; /* 39.457px */
-letter-spacing: -2.25px;
+letter-spacing: -1.25px;
 
     background: linear-gradient(179deg, #A9A9A9 19.25%, #999 37.51%, #5E5E5E 67.96%);
 background-clip: text;

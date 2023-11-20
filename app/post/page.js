@@ -56,19 +56,21 @@ export default function Home() {
     const [publishData, setPublishData] = useState("");
     const [published, setPublished] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
-    const [PostConfirmations, setPostConfirmations] = useState("");
-    const [PublishConfirmations, setPublishConfirmations] = useState("");
-    const [debouncedtpassword] = useDebounce(tpassword, 1000);
+    const [PostConfirmations, setPostConfirmations] = useState("0");
+    const [PublishConfirmations, setPublishConfirmations] = useState("0");
+    const [debouncedtpassword] = useDebounce(tpassword, 200);
     const [auter, setauter] = useState(false);
     const [chain, setchain] = useState("");
-    var rpc = ""
+    const [rpc, setrpc] = useState("");
+    
 
 
     useEffect(() => {
 
         if (chain) {
-            rpc = networks(chain)
+            setrpc((prev)=>networks(chain))
         }
+        
 
     }, [chain]);
 
@@ -149,8 +151,8 @@ export default function Home() {
         const postText = uhead + "<>" + enco.encode(Title) + "<>" + enco.encode(Keywords) + "<>" + enco.encode(Description);
 
 
-        setPostData("0x" + CryptoJS.enc.Hex.stringify(CryptoJS.enc.Utf8.parse(CryptoJS.AES.encrypt(postText, tpassword).toString())))
-        console.log("post data:", postData);
+        setPostData((prev)=>"0x" + CryptoJS.enc.Hex.stringify(CryptoJS.enc.Utf8.parse(CryptoJS.AES.encrypt(postText, tpassword).toString())))
+   
     }
 
     function constructPTrx(
@@ -171,7 +173,7 @@ export default function Home() {
 
         var PublishText = anon + "<>" + postHash + "<>" + tpassword + "<>" + hname + "<>" + Title + "<>" + Keywords + "<>" + hdate + "<>" + hnumber;
         const hexString = "0x" + stringToHex(PublishText);
-        setPublishData(hexString)
+        setPublishData((prev)=>hexString)
     }
 
 
@@ -194,7 +196,7 @@ export default function Home() {
         setPublishHash(childData);
     };
 
-    async function getLatestBlockNumber() {
+    async function getLatestBlockNumber(rpc) {
         const rpcNodeURL = rpc;
         const response = await fetch(rpcNodeURL, {
             method: 'POST',
@@ -214,7 +216,7 @@ export default function Home() {
         return latestBlockNumber;
     }
 
-    async function getTransactionBlockNumber(txHash) {
+    async function getTransactionBlockNumber(txHash,rpc) {
         const rpcNodeURL = rpc;
         const response = await fetch(rpcNodeURL, {
             method: 'POST',
@@ -234,39 +236,53 @@ export default function Home() {
         return transactionBlockNumber;
     }
 
-    async function checkConfirmations() {
-        const latestBlockNumber = await getLatestBlockNumber();
-        if (postHash !== "") {
+    async function checkConfirmations(rpc) {
+
+        if (PostConfirmations <7 || PublishConfirmations<7){
+
+            const latestBlockNumber = await getLatestBlockNumber(rpc);
+        
+        if (postHash !== "" && PostConfirmations <7) {
+        
             const transactionBlockNumber = await getTransactionBlockNumber(
-                postHash
+                postHash,rpc
             );
 
             const PostConfirmationCount = latestBlockNumber - transactionBlockNumber;
 
-            setPostConfirmations(PostConfirmationCount);
+            setPostConfirmations((prev)=>PostConfirmationCount);
 
         };
-        if (publishHash !== "") {
+        if (publishHash !== "" && PublishConfirmations<7) {
+         
             const transactionBlockNumber = await getTransactionBlockNumber(
-                publishHash
+                publishHash,rpc
             );
 
             const PublishConfirmationCount = latestBlockNumber - transactionBlockNumber;
 
-            setPublishConfirmations(PublishConfirmationCount)
+            setPublishConfirmations((prev)=>PublishConfirmationCount)
 
         }
+
+        }
+        
 
     }
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            checkConfirmations();
-        }, 5000);
 
-        return () => {
-            clearInterval(interval);
-        };
+        if (postHash !==""){
+            const interval = setInterval(async () => {
+                await checkConfirmations(rpc);
+            }, 5000);
+            
+            return () => {
+                clearInterval(interval);
+            };
+
+        }
+        
     }, [postHash, publishHash]);
 
 
@@ -286,7 +302,7 @@ export default function Home() {
 
     function handleTitle(e) {
         setTitle(e.target.textContent)
-        console.log(Title)
+      
     }
 
 
@@ -304,7 +320,7 @@ export default function Home() {
                     <h3
                         id="my-title-input"
                         data-default-value="Title"
-                        className="w-3/4 items-center justify-start text-left text-3xl font-bold bg-transparent text-white focus:outline-none resize-none my-0 mx-auto"
+                        className="w-3/4 text-[#DADADA] items-center justify-start text-left text-3xl font-bold bg-transparent  focus:outline-none resize-none my-0 mx-auto"
                         onInput={handleTitle}
                         disabled={posted} contentEditable
                     />
@@ -314,7 +330,7 @@ export default function Home() {
                     </div>
 
                     <textarea
-                        className="w-3/4 text-xl rounded-md border-0 bg-none text-white focus:outline-none shadow-sm sm:text-sm h-80 resize-none bg-white/0"
+                        className="w-3/4 text-xl placeholder-[#7a7a7a] text-[#DADADA] rounded-md border-0 bg-none  focus:outline-none shadow-sm sm:text-sm h-80 resize-none bg-white/0"
                         placeholder="Description..."
                         id="desinp"
                         disabled={posted}
@@ -333,7 +349,7 @@ export default function Home() {
                     <div onClick={handleAuter}
                         className="w-3/4 group mx-auto flex justify-start rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-neutral-700 hover:cursor-pointer "
                     >
-                        <h2 className={`mb-3 text-lg font-md`}>
+                        <h2 className={`mb-3 text-lg font-md text-[#DADADA]  my-7 rounded-md`}>
                             Continue{' '}
                             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                                 -&gt;
@@ -451,7 +467,7 @@ export default function Home() {
                                         </div>
                                         {PublishConfirmations >= 7 && (
                                             <h3 className="text-left m-5 ml-8">
-                                                Publhed Successfully
+                                                Published Successfully
                                             </h3>
                                         )}
                                     </div>
@@ -535,7 +551,7 @@ export default function Home() {
                             </button>
 
 
-                            <Link className=" w-auto" href={"/verify/" + postHash + "/?p=" + tpassword + "&chain=" + chain}>
+                            <Link className=" w-auto" href={"/verify/" + postHash + "/?p=" + encodeURIComponent(tpassword) + "&chain=" + chain+ "&ph=" + publishHash}>
                                 View <FaArrowRight />
                             </Link>
 
