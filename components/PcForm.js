@@ -23,9 +23,9 @@ export default function Pcform(props){
     }
 
 
-    return(<main className="mt-10  justify-center hidden md:flex ">
+    return(<main className="mt-10 mb-24  justify-center hidden md:flex ">
 
-    <div className="flex-col w-4/5 mx-auto h-3/4 rounded-md border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 px-9 pt-2">
+    <div className="flex-col w-4/5 mx-auto h-3/4 bg-gradient-to-b from-[#111111] to-transparent rounded-md border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 px-9 pt-2">
         <div
             className="group flex w-fit m-3 items-end justify-end rounded-lg border border-transparent transition-colors hover:border-neutral-700 hover:cursor-pointer " onClick={props.closer}
         >

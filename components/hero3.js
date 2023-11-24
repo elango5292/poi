@@ -1,4 +1,3 @@
-import Cryptologo from "./cryptologos"
 import Hero31 from "./hero31"
 import Heroa2 from "./../components/heroa2"
 export default function hero3({w}){

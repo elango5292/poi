@@ -26,7 +26,7 @@ export default function Mobileform(props){
     return(
 <div className="flex mt-10 justify-center mb-5 pb-5 md:hidden">
 
-                <div className="flex flex-col w-11/12 max-w-md rounded-md border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 px-4 pt-2" >
+                <div className="flex flex-col w-11/12 bg-gradient-to-b from-[#111111] to-transparent max-w-md rounded-md border-0 text-white shadow-sm ring-1 ring-inset ring-white/10 px-4 pt-2" >
                     <div
                         className="group flex w-fit m-3 items-end justify-end rounded-lg border border-transparent transition-colors hover:border-neutral-700 hover:cursor-pointer " onClick={props.closer}
                     >

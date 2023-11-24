@@ -39,7 +39,7 @@ export default function Example() {
         <Disclosure
             as="nav"
             className={`border-0  z-50 fixed w-screen overflow-hidden top-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ${
-                scrollPosition > 2 ? 'ring-1 ring-inset ring-white/10 bg-opacity-5 backdrop-blur-md' : ' backdrop-blur-sm'
+                scrollPosition > 2 ? 'ring-1 ring-inset ring-white/10 bg-opacity-50 bg-stone-900 backdrop-blur-lg' : ' backdrop-blur-2xl'
                 }`}
         >
             {({ open }) => (

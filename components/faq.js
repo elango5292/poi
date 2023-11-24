@@ -10,24 +10,24 @@ import {
     return (
         <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-[#8F9199] text-left ">Why should i record my ideas?</AccordionTrigger>
+          <AccordionTrigger className="text-[#8F9199] text-left ">Why should I record my ideas?</AccordionTrigger>
           <AccordionContent className="text-[#7D7D7D] text-left">
-          Recording your ideas ensures secure sharing with others, with blockchain technology guaranteeing immutable records. This provides peace of mind for collaboration, feedback-seeking, and publishing, safeguarding your ownership.
+          Recording your ideas with blockchain technology creates a immutable record which links you and your idea. This provides a peace of mind during collaboration, feedback-seeking, and publishing, safeguarding your ownership.
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-2">
           <AccordionTrigger className="text-[#8F9199] text-left"> Is it safe to enter my personal details?</AccordionTrigger>
           <AccordionContent className="text-[#7D7D7D]">
-          Your personal information, such as your date of birth and ID, doesn't leave your browser. Only a hash of it is stored on the blockchain, creating a verifiable link between your name, date of birth, and government-backed data. This distinction also helps identify individuals with the same name and birthdate.
+          Your personal information - such as your date of birth and ID - doesn't leave your browser. Only a hash of it is stored along other post details on the blockchain, creating a verifiable link between your name, date of birth, and an official ID. This distinction also helps identify individuals with the same name and birthdate.
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-3">
-          <AccordionTrigger className="text-[#8F9199] text-left">Why are there two different passwords?
+          <AccordionTrigger className="text-[#8F9199] text-left">Why are there two seperate passwords?
 </AccordionTrigger>
           <AccordionContent className="text-[#7D7D7D] text-left">
-          The Transaction Password serves as the initial encryption key, ensuring data security during the publishing process. This password is disclosed after data publication. In contrast, the Identity Password remains concealed and exclusively serves to encrypt and verify the user's identity.
+          Both passwords serve as encryption keys at different stages of publication. The Transaction Password serves as the initial encryption key, encrypting the initial posting process where the entire post is encrypted to secure authorship from block miners. This password is disclosed only after the initial data is successfully recorded and confirmed with at least 7 block confirmations. In contrast, the Identity Password remains concealed and exclusively serves to encrypt and verify the user's identity, which is used to verify authorship in case of a dispute.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

@@ -16,9 +16,18 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 // import PageComponent from "../../components/trans"
 import { CgSpinner } from "react-icons/cg";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
-import Pcform from "../../components/PcForm"
+// import Pcform from "../../components/PcForm"
 import networks from "../../lib/networks"
 
+const Pcform = dynamic(() =>
+    import("../../components/PcForm"), {
+    loading: () => <div className="flex w-[90vw] mx-auto items-center justify-center h-20">
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-md bg-white/30 mx-1 animate-pulse"></div>
+        <div className="w-4 h-4 rounded-full bg-white/30 mx-1 animate-pulse"></div>
+    </div>,
+}
+)
 
 const PageComponent = dynamic(() =>
     import("../../components/trans")

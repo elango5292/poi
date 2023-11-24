@@ -61,7 +61,7 @@ export default function Home() {
            
           </div>
   
-          <div className="text-center absolute z-[50] w-full sm:w-1/4 top-[318px]">
+          <div className="text-center absolute z-[49] w-full sm:w-1/4 top-[318px]">
             <h3 className=" mx-auto not-italic  font-black select-none herooh ">Create immutable records of your ideas</h3>
   
             <p className="mt-3 mx-auto heroop shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none ">Protected by blockchain-backed records</p>

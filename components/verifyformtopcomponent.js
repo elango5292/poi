@@ -10,7 +10,7 @@ return(
 
             <div className="flex flex-col w-[320px]   md:w-[675px] rounded-md  mx-auto md:mx-[0px] px-[13px] py-[21px] md:px-[37px] md:py-[19px]  md:h-[130px] h-[130px] flex-shrink-0 border-solid border-[1px] border-gray-700 bg-[#060606]" >
             <a href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}`} target="_blank" className="flex flex-row items-center">
-                            <p className="md:w-[233px] w-[183px] h-auto truncate md:text-[18px] text-[14px] text-ellipsis overflow-hidden break-words text-[#D9D9D9] font-medium">
+                            <p className="md:max-w-[450px] md:w-fit md:mr-2 w-[183px] h-auto truncate md:text-[18px] text-[14px] text-ellipsis overflow-hidden break-words text-[#D9D9D9] font-medium">
                                 {pwords.words[4]}
                             </p>
                             <LuExternalLink className="inline" />

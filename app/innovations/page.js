@@ -6,26 +6,26 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Link from "next/link";
 import debounce from 'lodash/debounce';
 import Footer from "./../../components/footer"
-
+import Innovationload from "@/components/skeletons/innovationload"
 function Page({ item }) {
   return (
     <Link href={`/innovations/${item.hash}/?chain=${item.chain}`}>
-      <div className="flex flex-col flex-wrap bg-transparent border-[#2E2E2E] hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#cecece] rounded-[4px] border-[1px] my-1 py-4 pl-4" key={item.id}>
+      <div className="flex flex-col flex-wrap bg-transparent border-[#2E2E2E] hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#DADADA] rounded-[4px] border-[1px] my-1 py-4 pl-4" key={item.id}>
       <>
-                    <p className="font-light tracking-[0.2px]">{item.date}</p>
+                    <p className="font-light text-[#DADADA] tracking-[0.2px]">{item.date}</p>
                 </>
                 <>
-                    <h1 className="font-bold tracking-[-0.1px] mr-2 my-2">{item.title}</h1>
+                    <h1 className="font-bold tracking-[-0.01px] text-[#DADADA] mr-2 my-2">{item.title}</h1>
                 </>
                 <>
                     {item.author !== "Annonymous" ? (
                         <p className="mr-2">
-                            <CgProfile className="mr-2 font-medium tracking-[-0.085px] inline" />
+                            <CgProfile className="mr-2 font-medium text-[#DADADA] tracking-[-0.085px] inline" />
                             {item.author}
                         </p>
                     ) : (
                             <p className="mr-2">
-                                <MdHideSource className="mx-2 inline" /> "Annonymous"
+                                <MdHideSource className="mx-2 inline text-[#DADADA]" /> "Annonymous"
                             </p>
                         )}
                 </>
@@ -34,8 +34,20 @@ function Page({ item }) {
   );
 }
 
+function Loadskelelist() {
+  let skelelist = [];
+  for (let i = 0; i < 10; i++) {
+    skelelist.push(
+      
+      <Innovationload key={i}/>
+    );
+  }
+  return skelelist;
+}
+
 export default function Verify() {
   const [load, setLoad] = useState(false);
+  const [skeleload, skelesetLoad] = useState(true);
   const [pages, setPages] = useState([]);
   const [search, setSearch] = useState("");
   const [hasMorePages, setHasMorePages] = useState(true); // Track if there are more pages to load
@@ -53,10 +65,11 @@ export default function Verify() {
 
   function updater(cnt, search) {
     handlePagi(cnt, search).then(data => {
-      console.log("from updater", data);
+      
       setPages(data.ddf);
       setHasMorePages(data.hasMorePages); // Update hasMorePages state
     });
+    
     setLoad(false);
   }
 
@@ -65,6 +78,11 @@ export default function Verify() {
     updater(1, "");
   }, []);
 
+  useEffect(() => {
+    if (pages.length > 0) {
+      skelesetLoad(false);
+    }
+  }, [pages]);
   async function handlePagi(cnt, s) {
     try {
       const response = await fetch(`/api/innovations?page=${cnt}&s=${s}`);
@@ -125,9 +143,11 @@ export default function Verify() {
         </div>
 
         <div className="flex flex-col min-h-[65vh] mx-2 w-screen sm:w-3/5">
-          {pages.map((item) => (
-            <Page key={item.id} item={item} />
-          ))}
+        {skeleload ? (<Loadskelelist/>) : (pages.map((item) => (
+  <Page key={item.id} item={item} />
+)))}
+        
+          
 
           {load ? (
             <p>Loading...</p>

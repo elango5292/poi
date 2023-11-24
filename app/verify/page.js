@@ -72,6 +72,7 @@ const Verifyform1 = dynamic(() =>
 const TransactionDetails = () => {
 
     const [up,setup]=useState(1);
+    const [showPopup, setShowPopup] = useState(false);
     const [words, setWords] = useState("");
     const [pwords, setPwords] = useState("");
     const [ph, setph] = useState("");
@@ -98,7 +99,7 @@ async function postwordcollector(hash,passw,chain){
                         Author Identity Verification
                     </h1>
                     <p className="mt-[15px] w-[293px] md:w-[618px] md:h-auto text-gray-400 md:text-center text-[12px] md:text-sm font-light leading-normal ">
-                    This interface simplifies the author verification process. In the 'Name' section, the author's name is auto-populated if publicly available; otherwise, users enter it manually. The 'Date of Birth' and 'ID' sections collect relevant author information, the 'Identity Password' section prompts for the password set by the author when creating the post. Upon submission, an instant indication confirms or denies successful decryption of blockchain data using the provided password, ensuring a straightforward and secure verification experience. </p>
+                    This interface simplifies the author verification process. In the 'Name' section, the author's name is auto-populated if publicly available; otherwise, the user have to enter it manually. The 'Date of Birth' and 'ID' sections collect relevant author information, the 'Identity Password' section requires the password set by the author upon creating the post. Upon submission, an instant indication confirms or denies successful decryption of blockchain data using the provided password, ensuring a straightforward and secure verification process. </p>
                 </div>
                 
 
@@ -127,7 +128,7 @@ async function postwordcollector(hash,passw,chain){
        
         const [transactionHash, setTransactionHash] = useState("");
         const [chain, setchain] = useState("1");
-        const [showPopup, setShowPopup] = useState(false);
+        
         const [rpc, setrpc] = useState("");
         const [isCopied, setIsCopied] = useState(false);
         
@@ -242,7 +243,7 @@ async function postwordcollector(hash,passw,chain){
         function handleSubmit(e) {
             e.preventDefault();
             handleCollect()
-            setShowPopup(true)
+            setShowPopup((prev)=>true)
 
         }
 
@@ -270,7 +271,7 @@ async function postwordcollector(hash,passw,chain){
                             Author Identity Verification
                         </h1>
                         <p className="mt-[15px] w-[293px] md:w-[618px] md:h-[89px] text-gray-400 md:text-center text-[12px] md:text-sm font-light leading-normal ">
-                            Author Verification offers a robust method to confirm the identity of the individual behind a post. By inputting the publish-hash associated with their post and selecting the corresponding blockchain, users can seamlessly locate their content within the blockchain and initiate the author verification process.
+                            This page offers a robust method to confirm the identity of the individual behind a post. By inputting the publish-hash associated with a post and selecting the corresponding blockchain, users can seamlessly locate their content within the blockchain and initiate the author verification process.
                         </p>
                     </div>
 
@@ -332,9 +333,9 @@ async function postwordcollector(hash,passw,chain){
 
                     
 
-                    {(showPopup) && (
+                    {showPopup && 
                        <Verifyform1 words={words} ph={ph} time={time} handleverify={handleverify} handleCopy={handleCopy} isCopied={isCopied} chain={chaing}/>
-                    )}
+                    }
 
                 </div>
             </div>)

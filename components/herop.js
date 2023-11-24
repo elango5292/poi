@@ -107,7 +107,7 @@ function Heropc(){
       />
 
       <div className="w-screen flex flex-row flex-wrap h-screen md:h-screen absolute">
-        <div className="md:left-[20%] text-center md:text-left md:mx-3 relative z-[50] w-full sm:w-1/4 top-[12%] md:top-[23%]">
+        <div className="md:left-[20%] text-center md:text-left md:mx-3 relative z-[49] w-full sm:w-1/4 top-[12%] md:top-[23%]">
           <h3 className="bg-clip-text bg-gradient-to-b from-white to-[#999999] text-transparent mx-4 md:mx-auto text-5xl md:text-6xl not-italic font-black  md:font-semibold md:tracking-[-3.2px] select-none">Create immutable <span className="bg-clip-text bg-gradient-to-tl from-white to-gray-500 "> records </span>of your ideas</h3>
 
           <p className="md:my-5 my-7 land3te  mx-9 md:mx-auto shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none">Protected by blockchain-backed records</p>
