@@ -21,7 +21,7 @@ export default function verify() {
 
 
     const [postdate, setpostdate] = useState("");
-    const [loading, setloading] = useState("0");
+    const [loading, setloading] = useState(true);
     const [words, setWords] = useState("");
     const [rpc, setrpc] = useState("");
     const [addressdetail, setaddressdetail] = useState("");
@@ -101,18 +101,22 @@ export default function verify() {
             let namoe = new Uint8Array(ccon[1].split(',').map(Number));
             ccon[1] = decodo.decode(namoe)
             setWords(ccon)
-            setloading("2")
+           
         } else {
             setWords(ccon)
-            setloading("2")
         }
 
     }
 
+    useEffect(() => {
+        if (words.length > 0) {
+          setloading(false);
+        }
+      }, [words]);
 
     return (
         <div>
-            {(loading === "2") ? (<div className="max-w-3xl mt-24 min-h-[70vh] mx-auto p-4">
+            {loading ? <Postload/> :(<div className="max-w-3xl mt-24 min-h-[70vh] mx-auto p-4">
                 <h1 className="mb-4 text-3xl  font-extrabold leading-tight text-[#DADADA] lg:mb-6 lg:text-4xl">
                     {words[4]}
                 </h1>
@@ -136,7 +140,7 @@ export default function verify() {
                     </p>
                 </div>
 
-            </div>) : (<Postload/>) }
+            </div>) }
             
             <div className="mb-[180px]">
                 <Postdetail pubhashdetail={publishhash} posthashdetail={pathname.hash} chain={chain} addressdetail={addressdetail} datedetail={postdate} authordetail={(words[0] === "1x") ? words[1] : "Annonymous"} /></div>

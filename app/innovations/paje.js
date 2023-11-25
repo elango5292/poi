@@ -12,7 +12,7 @@ function Page ({ item }) {
   return (
     <Link href={`/innovations/${item.hash}/?chain=${item.chain}`}>
       <div
-        className='flex flex-col animate-fade-in-up  mt-2 flex-wrap bg-transparent border-[#5c5c5c]  hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#DADADA] rounded-[4px] border-[1px] my-1 py-4 pl-4'
+        className='flex flex-col flex-wrap bg-transparent border-[#2E2E2E] hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#DADADA] rounded-[4px] border-[1px] my-1 py-4 pl-4'
         key={item.id}
       >
         <>
@@ -52,7 +52,7 @@ function Loadskelelist () {
 }
 
 export default function Verify () {
-  const [load, setLoad] = useState(true)
+  const [load, setLoad] = useState(false)
   const [skeleload, skelesetLoad] = useState(true)
   const [pages, setPages] = useState([])
   const [search, setSearch] = useState('')
@@ -79,6 +79,7 @@ export default function Verify () {
   }
 
   useEffect(() => {
+    setLoad(true)
     updater(1, '')
   }, [])
 
@@ -107,7 +108,6 @@ export default function Verify () {
   }
 
   const loadMore = () => {
-    setLoad(true)
     if (hasMorePages) {
       setCurrentPage(currentPage + 1)
       debouncedLoadmorer()
@@ -119,10 +119,8 @@ export default function Verify () {
       const data = await handlePagi(currentPage + 1, search)
       if (data.hasMorePages) {
         setPages(prevPages => [...prevPages, ...data.ddf])
-        setLoad(false)
       } else {
         setHasMorePages(false)
-        setLoad(false)
       }
     } catch (error) {
       console.error('Error loading more pages:', error)
@@ -133,24 +131,23 @@ export default function Verify () {
 
   return (
     <div>
-      <section className='h-screen md:pl-[10%] pt-20 md:pt-16 flex-col md:flex-row flex overflow-auto'>
-        <div className='md:w-64 mx-auto w-[100%] px-[10%] flex flex-col md:flex-none md:p-6 bg-black border-[#5c5c5c] md:border-r-[0px] md:border-b-[0px] border-b'>
-          <div className='flex items-center md:mt-9 md:mb-[0px] mb-8 space-x-4'>
-            <IconSearch className='h-5 w-5 text-[#DADADA]' />
+      <div className='flex justify-center mt-24 h-screen'>
+        <div className='flex flex-row w-screen min-h-screen justify-center content-start mx-4 flex-wrap'>
+          <div className='relative mt-3 mr-5'>
+            <i className='absolute top-0 left-0'>
+              <AiOutlineSearch className='w-5 h-5 mt-2.5 ml-2 text-white-100 focus:text-white' />
+            </i>
             <input
-              className='w-full h-10 pl-2 text-[#DADADA] bg-transparent rounded-md focus:outline-none  shadow-sm ring-1 ring-inset ring-[#5c5c5c] focus:ring-2 focus:ring-inset focus:ring-white-100'
+              className='rounded-md pl-8 bg-black px-3.5 py-2 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white-100 sm:text-sm sm:leading-5 mb-4 bg-transparent border-[1px] border-[#5a5a5a]  md:w-[200px] w-11/12'
               value={search}
               onChange={e => {
                 inputg(e)
               }}
               placeholder='search..'
-              type='text'
             />
           </div>
-        </div>
-        <div className='flex-1 md:scrollbar md:scrollbar-w-[2px] md:scrollbar-rounded md:scrollbar-thumb-[#3a3a3a] md:scrollbar-track-[#DADADA] overflow-y-auto p-6'>
-          <div className='space-y-2  md:space-y-2'>
-            <h1 className='my-3 text-xl'>Recent Posts</h1>
+
+          <div className='flex flex-col min-h-[65vh] mx-2 w-screen sm:w-3/5'>
             {skeleload ? (
               <Loadskelelist />
             ) : (
@@ -158,110 +155,32 @@ export default function Verify () {
             )}
 
             {load ? (
-              <div className='mx-auto w-full'>
-                <Button
-                  className='bg-gradient-to-br from-[#DADADA] to-[#FFF] my-4 mx-auto text-black'
-                  variant='outline'
-                >
-                  Loading
-                  <IconRefresh className='animate-spin ml-2 h-4 w-4' />
-                </Button>
-              </div>
+              <p>Loading...</p>
             ) : (
               hasMorePages && ( // Render "Load More" button only if there are more pages to load
-                <div className=' mx-auto w-full'>
-                  <Button
-                    className=' bg-gradient-to-br from-[#DADADA] to-[#FFF] my-4 mx-auto text-black'
-                    onClick={loadMore}
-                    variant='outline'
-                  >
-                    Load More
-                    <IconArrowright className='ml-2 h-4 w-4' />
-                  </Button>
-                </div>
+                <button className='my-5' onClick={loadMore}>
+                  Load More
+                </button>
               )
             )}
           </div>
         </div>
-      </section>
-      <Footer />
+      </div>
     </div>
   )
 }
-
-function IconSearch (props) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    >
-      <circle cx='11' cy='11' r='8' />
-      <path d='m21 21-4.3-4.3' />
-    </svg>
-  )
-}
-
-function Component () {
-  return (
-    <>
-      <Button className='bg-white text-black' variant='outline'>
-        Load More
-        <IconArrowright className='ml-2 h-4 w-4' />
-      </Button>
-      <Button className='bg-white text-black' variant='outline'>
-        Loading
-        <IconRefresh className='animate-spin ml-2 h-4 w-4' />
-      </Button>
-    </>
-  )
-}
-
-function IconArrowright (props) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    >
-      <path d='M5 12h14' />
-      <path d='m12 5 7 7-7 7' />
-    </svg>
-  )
-}
-
-function IconRefresh (props) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    >
-      <path d='M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8' />
-      <path d='M21 3v5h-5' />
-      <path d='M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16' />
-      <path d='M8 16H3v5' />
-    </svg>
-  )
+{
+  /* <div className="relative mt-3 mr-5">
+          <i className="absolute top-0 left-0">
+            <AiOutlineSearch className="w-5 h-5 mt-2.5 ml-2 text-white-100 focus:text-white" />
+          </i>
+          <input
+            className="rounded-md pl-8 bg-black px-3.5 py-2 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white-100 sm:text-sm sm:leading-5 mb-4 bg-transparent border-[1px] border-[#5a5a5a]  md:w-[200px] w-11/12"
+            value={search}
+            onChange={(e) => {
+              inputg(e);
+            }}
+            placeholder="search.."
+          />
+        </div> */
 }

@@ -1,7 +1,15 @@
+"use client"
 import { FaLockOpen, FaLock } from "react-icons/fa";
-
+import Atos from "@/components/atos"
+import { useState,useEffect } from "react";
 export default function Pcform(props){
-
+    const [act , setAct]=useState(false)
+    const [coloract , setcoloract]=useState(false)
+useEffect(()=>{
+if (act) {
+    setcoloract(false)
+}
+},[act])
     function handleContinue(){
 
         var inputElement1 = document.getElementById('ppassword');
@@ -12,13 +20,17 @@ export default function Pcform(props){
         var charLengthInput2 = inputElement2.value.length;
         var charLengthInput3 = inputElement3.value.length;
        
-        if (charLengthInput1>=12 && charLengthInput2>=1 && charLengthInput3 >=3){
+        if (charLengthInput1>=12 && charLengthInput2>=1 && charLengthInput3 >=3 && act){
             props.ar[8](true)
+            setcoloract(false)
 
         } else {
             inputElement1.reportValidity()
             inputElement2.reportValidity()
             inputElement3.reportValidity()
+        }
+        if (!act){
+            setcoloract(true)
         }
     }
 
@@ -118,20 +130,22 @@ export default function Pcform(props){
 
         </div>
         {/* Continue Button */}
-        <div className='flex w-auto items-end justify-end pb-2'>
-
+        <div className='flex flex-col my-7 w-auto items-end pr-[5%]  pb-2'>
+        <div className='flex flex-col gap-2 w-auto items-start justify-start  pb-2'>
+        < Atos colorr={coloract} setChecked={setAct} checked={act}/>
             <div
-                className="group flex w-fit mx-3 my-7 rounded-lg border border-transparent transition-colors hover:border-neutral-700 hover:cursor-pointer "
+                className="group flex w-full mx-3  rounded-lg border border-transparent transition-colors hover:border-neutral-700 hover:cursor-pointer "
                 onClick={handleContinue} disabled={props.br[9]}
            >
-                <h2 className={`px-4 py-2 text-md `}>
+            
+                <h2 className={`px-4 text-center w-[90%] py-2 bg-[#DADADA]  rounded-sm text-black text-md `}>
                     Continue{' '}
                     <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                         -&gt;
 </span>
                 </h2>
             </div>
-        </div>
+        </div></div>
     </div>
 
 

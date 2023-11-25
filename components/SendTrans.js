@@ -23,7 +23,7 @@ export default function Trans ({ setchain }){
 
   return (
     <div>
-      <ConnectButton />
+      <ConnectButton/>
     </div>
   );
 };

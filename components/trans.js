@@ -1,6 +1,6 @@
 // PageComponent.js
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { getDefaultWallets, RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
   sepolia,arbitrum,avalanche,bscTestnet,bsc,polygonMumbai,polygon,mainnet,avalancheFuji
@@ -53,7 +53,13 @@ const SendTrans = ({ data, hsh, s, completion, setCompletion,work,chain }) => {
   return (
     <div>
       <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider chains={chains}>
+        <RainbowKitProvider theme={darkTheme({
+      accentColor: '#DADADA',
+      accentColorForeground: 'black',
+      borderRadius: 'small',
+      fontStack: 'rounded',
+      overlayBlur: 'small',
+    })} chains={chains}>
           {va === "showwal" && <Trans setchain={chain} />}
 
           {va === 0 && (

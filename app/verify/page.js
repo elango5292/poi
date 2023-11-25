@@ -113,7 +113,7 @@ async function postwordcollector(hash,passw,chain){
   </span>
                         {' '}Back
 </h2>
-                </div><Verifyformtop  words={words} pwords={pwords} chain={chaing}/></div>
+                </div><Verifyformtop  words={words} pwords={pwords} ph={ph} chain={chaing}/></div>
                 <div className="md:mt-[40px] mt-[30px]">
 
                 <Verifyform pwords = {pwords}  /></div>

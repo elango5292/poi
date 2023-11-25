@@ -37,7 +37,7 @@ const Mobileform = dynamic(() =>
     import("../../components/MobileForm")
 )
 
-
+import Atos from "@/components/atos"
 
 function stringToHex(str) {
     const wordArray = CryptoJS.enc.Utf8.parse(str);
