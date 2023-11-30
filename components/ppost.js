@@ -59,7 +59,7 @@ export default function Ppost ({data,hsh,completion,setCompletion,work}) {
       }}
       
     }}>
-      <button>
+      <button className="text-[#DADADA]">
 
   {isLoading
     ? 'Posting'
@@ -67,7 +67,7 @@ export default function Ppost ({data,hsh,completion,setCompletion,work}) {
     ? 'Posted'
     : 'Post'}
 </button>
-      <FaArrowRight />
+      <FaArrowRight className="text-[#DADADA]"/>
     </div>
   );
 };

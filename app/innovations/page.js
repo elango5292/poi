@@ -21,18 +21,18 @@ function Page ({ item }) {
           </p>
         </>
         <>
-          <h1 className='font-bold tracking-[-0.01px] text-[#DADADA] mr-2 my-2'>
+          <h1 className='font-semibold tracking-[-0.01px] text-[#DADADA] mr-2 my-2'>
             {item.title}
           </h1>
         </>
         <>
           {item.author !== 'Annonymous' ? (
-            <p className='mr-2'>
-              <CgProfile className='mr-2 font-medium text-[#DADADA] tracking-[-0.085px] inline' />
+            <p className='mr-2 font-light text-[#DADADA]'>
+              <CgProfile className='mr-2  text-[#DADADA] tracking-[-0.085px] inline' />
               {item.author}
             </p>
           ) : (
-            <p className='mr-2'>
+            <p className='mr-2 font-light text-[#DADADA]'>
               <MdHideSource className='mx-2 inline text-[#DADADA]' />{' '}
               "Annonymous"
             </p>
@@ -171,7 +171,7 @@ export default function Verify () {
               hasMorePages && ( // Render "Load More" button only if there are more pages to load
                 <div className=' mx-auto w-full'>
                   <Button
-                    className=' bg-gradient-to-br from-[#DADADA] to-[#FFF] my-4 mx-auto text-black'
+                    className=' bg-gradient-to-br from-[#DADADA] to-[#fafafa] my-4 mx-auto text-black'
                     onClick={loadMore}
                     variant='outline'
                   >

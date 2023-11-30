@@ -44,6 +44,8 @@ const Verifyformtop = dynamic(() =>
 }
 )
 
+import Confirmed from "@/components/confirmed"
+
 const Verifyform = dynamic(() =>
     import("../../components/verifyForm"), {
     loading: () => <div className="flex items-center justify-center h-20">
@@ -91,6 +93,16 @@ async function postwordcollector(hash,passw,chain){
 
 }
     function Verify2() {
+        const [showPopup, setShowPopup] = useState(false);
+        const handleClose = (e) => {
+            if (e.target.className.includes('backdrop')) {
+                setShowPopup(false);
+            }
+        }
+    
+        const handleNothing = (e) => {
+            e.stopPropagation();
+        }
         return (
             <div className="min-h-screen mt-20 w-[98vw] overflow-hidden ">
             <div className="min-h-[90vh] mx-auto flex flex-col">
@@ -116,7 +128,15 @@ async function postwordcollector(hash,passw,chain){
                 </div><Verifyformtop  words={words} pwords={pwords} ph={ph} chain={chaing}/></div>
                 <div className="md:mt-[40px] mt-[30px]">
 
-                <Verifyform pwords = {pwords}  /></div>
+                <Verifyform pwords = {pwords} op={showPopup} handleop = {()=>{setShowPopup(true)}}/></div>
+                {showPopup && (
+            <div className="fixed inset-0 z-20 flex items-center md:items-end justify-center w-screen h-screen backdrop-blur-sm bg-black  bg-opacity-60 " onClick={handleClose}>
+                <div className="md:w-[45%]  confirmedcontainer animate-fade-in-up md:h-auto w-[85%]  m-5  pt-5 pb-4 md:py-9 text-center backdrop-blur-lg rounded-md mb-4 bg-gradient-to-b from-slate-100 to-gray-900 bg-opacity-40 md:bg-opacity-30 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10" onClick={handleNothing}>
+                    <Confirmed/>
+
+                    <Button onClick={()=>setShowPopup(false)} className="px-5 py-2 mt-6 mb-3 bg-[#e1e1e1] text-black ring-1 ring-inset ring-black/10">Done</Button>
+                </div>
+            </div>)}
                 <div className="md:mt-[85px] mx-auto mt-[150px]">
                   <p className="text-[12px] font-light px-5 text-[#6D6D6D] md:px-5">*Note: Successfully verifying this interface allows authors to assert their authorship in the event of a dispute. Authors can do this by entering their identity password and confirming their authorship. The system then attempts to decrypt the encrypted official ID number, name, and date of birth. It’s important to remember that all sensitive information, including the ID number and date of birth, remains encrypted and private, never being disclosed to the public. The author verification process identifies individuals based on their knowledge of the identity password, which subsequently reveals the official ID number. This ID number, issued by any official authority, can then be cross-referenced with the name and date of birth on the encrypted data to confirm the author’s identity. The ID can provided by any official body, and authorship is established as it corresponds with the author’s date of birth and name, thereby enhancing the robustness of the verification process in case of a dispute. Alternatively, authorship can also be established by simply holding the private key of the address that published the post.</p>
                 </div>
@@ -278,7 +298,7 @@ async function postwordcollector(hash,passw,chain){
 
 
 
-                    <div className='mt-[60px]   mx-auto w-[300px] md:w-[436px]'>
+                    <div className='mt-[60px] md:mb-[25px] pt-[15px] md:py-[30px]  mx-auto w-[310px] px-[15px] md:w-[536px] md:px-[50px] verifyformfirst'>
 
 
 
@@ -291,7 +311,7 @@ async function postwordcollector(hash,passw,chain){
                                         <FormItem>
                                             <FormLabel className="text-[12px]">Publish Hash</FormLabel>
                                             <FormControl>
-                                                <Input className="bg-black  border-gray-700 text-gray-300" placeholder="0x1231..." {...field}  value={transactionHash} onChange={(e) => onValues(e)} />
+                                                <Input className="bg-black  border-[#5E5E5E] text-gray-300" placeholder="0x1231..." {...field}  value={transactionHash} onChange={(e) => onValues(e)} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -299,10 +319,10 @@ async function postwordcollector(hash,passw,chain){
                                 />
                                 <div className="flex overflow-auto justify-between items-center">
                                     <Select onValueChange={setchain} className="self-center  ">
-                                        <SelectTrigger className="w-[180px] mx-1 my-2 border-gray-700 text-gray-300">
+                                        <SelectTrigger className="w-[180px] mx-1 my-2 border-[#5E5E5E] text-[#d5d5d5]">
                                             <SelectValue placeholder="Select Chain" className="text" />
                                         </SelectTrigger>
-                                        <SelectContent className="bg-black">
+                                        <SelectContent className="bg-gradient-to-b from-[#141414] to-[#000]  border-[#5E5E5E] bg-opacity-40 backdrop-blur-lg">
                                             <SelectGroup>
                                                 <SelectLabel>Chains Available</SelectLabel>
                                                 <SelectItem value="11155111">Sepolia</SelectItem>
@@ -319,7 +339,7 @@ async function postwordcollector(hash,passw,chain){
                                         </SelectContent>
                                     </Select>
 
-                                    <Button type="submit" onClick={(e)=>{handleSubmit(e)}} className="mx-2  bg-[#D9D9D9] text-black">Search</Button>
+                                    <Button type="submit" onClick={(e)=>{handleSubmit(e)}} className="mx-2 bg-gradient-to-b from-[#ebebeb] to-[#c5c5c5]  text-black">Search</Button>
 
                                 </div>
                             </form>

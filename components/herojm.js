@@ -64,7 +64,7 @@ export default function Home() {
           <div className="text-center absolute z-[49] w-full sm:w-1/4 top-[318px]">
             <h3 className=" mx-auto not-italic  font-black select-none herooh ">Create immutable records of your ideas</h3>
   
-            <p className="mt-3 mx-auto heroop shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none ">Protected by blockchain-backed records</p>
+            <p className="mt-3 mx-auto heroop shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none ">Secured by Blockchain-Backed Records</p>
   
               <a className="herobu select-none relative top-[20px] px-9 py-3 shadow-sm hover:shadow-md hover:bg-zinc-950 hover:shadow-slate-50 shadow-white " href="/post"> Start Posting {' '}<span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;

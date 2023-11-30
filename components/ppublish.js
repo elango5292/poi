@@ -52,7 +52,7 @@ return (
   }
   
 }}>
-  <button>
+  <button className="text-[#DADADA]">
     
 {isLoading
 ? 'Publishing'
@@ -60,7 +60,7 @@ return (
 ? 'Published'
 : 'Publish'}
 </button>
-  <FaArrowRight />
+  <FaArrowRight className="text-[#DADADA]"/>
 </div>
 );
 };

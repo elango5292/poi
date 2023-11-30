@@ -110,7 +110,7 @@ function Heropc(){
         <div className="md:left-[20%] text-center md:text-left md:mx-3 relative z-[49] w-full sm:w-1/4 top-[12%] md:top-[23%]">
           <h3 className="bg-clip-text bg-gradient-to-b from-white to-[#999999] text-transparent mx-4 md:mx-auto text-5xl md:text-6xl not-italic font-black  md:font-semibold md:tracking-[-3.2px] select-none">Create immutable <span className="bg-clip-text bg-gradient-to-tl from-white to-gray-500 "> records </span>of your ideas</h3>
 
-          <p className="md:my-5 my-7 land3te  mx-9 md:mx-auto shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none">Protected by blockchain-backed records</p>
+          <p className="md:my-5 my-7 land3te  mx-9 md:mx-auto shrink-0 text-white text-lg not-italic font-light leading-[normal] tracking-[-0.18px] select-none">Secured by Blockchain-Backed Records</p>
 
             <a className=" select-none bg-clip-text bg-gradient-to-bl from-white to-gray-400 text-transparent text-md px-14 py-3 mt-4 shadow-sm hover:shadow-md hover:bg-zinc-950 hover:shadow-slate-50 shadow-white md:top-[5%]" href="/post"> Start Posting {' '}<span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
             -&gt;

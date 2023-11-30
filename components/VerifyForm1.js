@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { CgProfile } from "react-icons/cg";
 export default function foras({ words, ph,handleverify, time, handleCopy, isCopied,chain }) {
     return (
-        <div className="flex overflow-hidden mt-[40px] flex-col mx-auto">
+        <div className="flex overflow-hidden md:mb-9 mt-[40px] flex-col mx-auto">
             <div className="w-[300px] mx-auto md:w-[524px] h-[1px] bg-gray-700" />
             <p className="md:mt-[24px] mt-[34px] mb-[24px] text-[#BEBEBE] text-[14px] ">Search Results :</p>
 
@@ -17,7 +17,7 @@ export default function foras({ words, ph,handleverify, time, handleCopy, isCopi
                             <p className="md:max-w-[233px] max-w-[183px] h-auto truncate md:text-[18px] text-[14px] text-ellipsis overflow-hidden break-words text-[white] font-medium">
                             {words[4]}
                             </p>
-                            <LuExternalLink className="inline" />
+                            <LuExternalLink className="inline ml-1" />
                         </a>
 
                         <div className="font-extralight md:text-[14px] text-[12px]  text-[#BEBEBE] md:my-[11px] my-[8px]  flex items-center">

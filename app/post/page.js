@@ -37,8 +37,6 @@ const Mobileform = dynamic(() =>
     import("../../components/MobileForm")
 )
 
-import Atos from "@/components/atos"
-
 function stringToHex(str) {
     const wordArray = CryptoJS.enc.Utf8.parse(str);
     const hexString = CryptoJS.enc.Hex.stringify(wordArray);
@@ -398,16 +396,16 @@ export default function Home() {
 
 
             {showPopup && (<div className="fixed inset-0 flex items-center justify-center w-screen h-screen backdrop-blur-sm bg-black/30" onClick={handleClose}>
-                <div className=" md:w-auto w-3/4 p-5 m-5 px-3.5 py-3.5 border-0 text-center backdrop-blur-md bg-black/30 rounded-md  mb-4 bg-black/5 text-white shadow-sm ring-1 ring-inset ring-white/10 " onClick={handleNothing}>
+                <div className=" md:w-auto w-3/4 p-5 m-5 px-3.5 py-3.5 border-0 text-center backdrop-blur-md bg-black/30 rounded-md  mb-4 bg-black/5 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 " onClick={handleNothing}>
                     <div className="flex flex-col px-2">
                         {activeStep === 0 && (
                             <div className="flex flex-col items-center">
                                 <PageComponent s="showwal" className="self-center" chain={setchain} />
-                                <div className="backdrop-blur-md bg-black/30 text-center items-center w-auto lg:min-w-700 rounded-md border-0 bg-black/5 px-3.5 py-3.5 text-white shadow-sm ring-1 ring-inset ring-white/10 my-4 ">
+                                <div className="backdrop-blur-md bg-black/30 text-center items-center w-auto lg:min-w-700 rounded-md border-0 bg-black/5 px-3.5 py-3.5 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 my-4 ">
                                     <p className="text-left pb-3 m-auto">Encrypt Post Transaction:</p>
                                     <input
                                         type="password"
-                                        className="w-11/12 flex flex-col text-center rounded-md border-0 bg-white/5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4"
+                                        className="w-11/12 flex flex-col text-center rounded-md border-0 bg-white/5 py-2 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4"
                                         placeholder="Transaction Password"
                                         id="inputTpassword"
                                         required
@@ -425,7 +423,7 @@ export default function Home() {
                             <div className="rounded-md ring-1 ring-inset ring-white/10 m-4">
                                 <div className="flex flex-col ">
                                     <h2 className="text-left ml-5 my-4">Post Transaction Hash: </h2>
-                                    <p className={(postHash === "") ? "w-auto h-8 animate-pulse mx-5 rounded-md border-0 bg-white/5 px-3.5 pb-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4" : "h-auto text-left  md:w-auto   mt-1 mx-5 mb-5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 whitespace-normal break-words"}>
+                                    <p className={(postHash === "") ? "w-auto h-8 animate-pulse mx-5 rounded-md border-0 bg-white/5 px-3.5 pb-2 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4" : "h-auto text-left  md:w-auto   mt-1 mx-5 mb-5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 whitespace-normal break-words"}>
                                         {postHash} </p>
 
 
@@ -458,7 +456,7 @@ export default function Home() {
                             <div className="rounded-md ring-1 ring-inset ring-white/10 m-4">
                                 <div className="flex flex-col ">
                                     <h2 className="text-left ml-5 my-4">Publish Transaction Hash: </h2>
-                                    <p className={(publishHash === "") ? "w-auto h-8 animate-pulse mx-5 rounded-md border-0 bg-white/5 px-3.5 pb-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4" : "h-auto text-left  md:w-auto   mt-1 mx-5 mb-5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 whitespace-normal break-words"}>
+                                    <p className={(publishHash === "") ? "w-auto h-8 animate-pulse mx-5 rounded-md border-0 bg-white/5 px-3.5 pb-2 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 mb-4" : "h-auto text-left  md:w-auto   mt-1 mx-5 mb-5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6 whitespace-normal break-words"}>
                                         {publishHash} </p>
 
 
@@ -515,13 +513,13 @@ export default function Home() {
                             </Stepper>
                         </div>
                     </div>
-                    <CardHeader className="w-auto rounded-md border-0 bg-white/0 text-white mb-4" />
+                    <CardHeader className="w-auto rounded-md border-0 bg-white/0 text-[#DADADA] mb-4" />
 
                     {activeStep === 0 && (
 
-                        <div className="flex w-auto justify-between m-3">
+                        <div className="flex flex-row w-auto justify-between m-3 mt-7">
                             <button className="" onClick={handleClose}>
-                                <FaArrowLeft /> Back
+                                <FaArrowLeft className="inline text-[#DADADA]" /> Back
                             </button>
 
                             {/* <button className=" w-auto" onClick={handlePost}>
@@ -541,7 +539,7 @@ export default function Home() {
                         <div className="flex w-auto justify-between m-3">
 
                             <button className="" onClick={handleBack}>
-                                <FaArrowLeft /> Previous
+                                <FaArrowLeft className="inline text-[#DADADA]" /> Previous
                             </button>
 
                             <div onClick={handlePublish}>
@@ -556,12 +554,12 @@ export default function Home() {
                     {activeStep == 2 && (
                         <div className="flex w-auto justify-between m-3">
                             <button className="" onClick={handleBack}>
-                                <FaArrowLeft /> Back
+                                <FaArrowLeft className="inline text-[#DADADA]" /> Back
                             </button>
 
 
                             <Link className=" w-auto" href={"/verify/" + postHash + "/?p=" + encodeURIComponent(tpassword) + "&chain=" + chain+ "&ph=" + publishHash}>
-                                View <FaArrowRight />
+                                View <FaArrowRight className="text-[#DADADA]" />
                             </Link>
 
                         </div>
