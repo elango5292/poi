@@ -7,7 +7,7 @@ import { CgSpinner } from "react-icons/cg";
 import { IoCheckmarkDoneCircle, IoCloseCircle } from "react-icons/io5";
 const sha256 = require("sha256");
 
-export default function validation({pwords,handleop , op}){
+export default function validation({pwords,handleop , op,setUserDetail}){
 
     const [aPassword, setApassword] = useState('');
     const [aName, setAname] = useState("");
@@ -59,6 +59,13 @@ export default function validation({pwords,handleop , op}){
 
     useEffect(() => {
         setnamesha((prev)=>sha256(aName + aPassword));
+        let newuserinput1
+        if (pwords.words[0] === "1x"){
+            newuserinput1 = {"name":pwords.words[1],"id":aId,"date":aDate}
+        } else {
+            newuserinput1 = {"name":aName,"id":aId,"date":aDate}
+        }
+        setUserDetail(()=>newuserinput1)
         levelupdater()
         setNamel(false);
     }, [aName]);
@@ -67,12 +74,29 @@ export default function validation({pwords,handleop , op}){
 
     useEffect(() => {
         setdatesha((prev)=>sha256(aDate + aPassword));
+        let newuserinput2
+        if (pwords.words[0] === "1x"){
+            newuserinput2 = {"name":pwords.words[1],"id":aId,"date":aDate}
+        } else {
+            newuserinput2 = {"name":aName,"id":aId,"date":aDate}
+        }
+        
+        setUserDetail(()=>newuserinput2)
         levelupdater()
+        
         setDatel(false);
     }, [aDate]);
 
     useEffect(() => {
         setidsha((prev)=>sha256(aId + aPassword));
+        let newuserinput3
+        if (pwords.words[0] === "1x"){
+            newuserinput3 = {"name":pwords.words[1],"id":aId,"date":aDate}
+        } else {
+            newuserinput3 = {"name":aName,"id":aId,"date":aDate}
+        }
+        
+        setUserDetail(()=>newuserinput3)
         levelupdater()
         setIdl(false)
     }, [aId]);
@@ -206,7 +230,7 @@ export default function validation({pwords,handleop , op}){
             <div className='order-3 md:order-3 '>
                 <div>
                     {vlevel<3?<button disabled={vlevel<3} className="text-[12px] md:mt-[0px] mt-4  flex justify-center items-center  md:text-[14px] rounded-md   bg-gradient-to-b from-[#7E7E7E] to-[#fafafa] text-black w-[263px] md:w-[217px] h-[40px] md:h-[41px]  hover:cursor-pointer" href="#enteryourdetails" onClick={()=>handleop()}>
-                     <FaLock className="inline mx-1"/>  Confirm Authorship
+                     <FaLock className="inline mx-1 text-[#080808]"/>  Confirm Authorship
 
                     </button> :
                     <button className="text-[12px] md:mt-[0px] mt-4  flex justify-center items-center  md:text-[14px] rounded-md   bg-gradient-to-t from-[#DADADA] to-[#fafafa] text-black w-[263px] md:w-[217px] h-[40px] md:h-[41px]  hover:cursor-pointer" href="#enteryourdetails" onClick={()=>handleop()}>

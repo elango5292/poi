@@ -80,11 +80,15 @@ const TransactionDetails = () => {
     const [ph, setph] = useState("");
         const [time, setTime] = useState("Sun, 01 Jan 2023 01:00:00 GMT");
         const [chaing, setchaing] = useState("1");
+        const [postfound , setpostfound]=useState(false)
+        
 function handlebac(){
     setup((prev)=>1)
 }
 function setpw(postwords){
+  
     setPwords((prev)=>postwords)
+    
 }
 async function postwordcollector(hash,passw,chain){
     let postwords = await worder(hash,passw,chaing)
@@ -94,6 +98,7 @@ async function postwordcollector(hash,passw,chain){
 }
     function Verify2() {
         const [showPopup, setShowPopup] = useState(false);
+        const [userDetail, setUserDetail]=useState({})
         const handleClose = (e) => {
             if (e.target.className.includes('backdrop')) {
                 setShowPopup(false);
@@ -125,14 +130,14 @@ async function postwordcollector(hash,passw,chain){
   </span>
                         {' '}Back
 </h2>
-                </div><Verifyformtop  words={words} pwords={pwords} ph={ph} chain={chaing}/></div>
+                </div><div className=""><Verifyformtop  words={words}  pwords={pwords} ph={ph} chain={chaing}/></div></div>
                 <div className="md:mt-[40px] mt-[30px]">
 
-                <Verifyform pwords = {pwords} op={showPopup} handleop = {()=>{setShowPopup(true)}}/></div>
+                <Verifyform pwords = {pwords}  op={showPopup} handleop = {()=>{setShowPopup(true)}} setUserDetail={setUserDetail}/></div>
                 {showPopup && (
             <div className="fixed inset-0 z-20 flex items-center md:items-end justify-center w-screen h-screen backdrop-blur-sm bg-black  bg-opacity-60 " onClick={handleClose}>
                 <div className="md:w-[45%]  confirmedcontainer animate-fade-in-up md:h-auto w-[85%]  m-5  pt-5 pb-4 md:py-9 text-center backdrop-blur-lg rounded-md mb-4 bg-gradient-to-b from-slate-100 to-gray-900 bg-opacity-40 md:bg-opacity-30 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10" onClick={handleNothing}>
-                    <Confirmed/>
+                    <Confirmed words={words} pwords={pwords} ph={ph} userDetail={userDetail} chain={chaing} />
 
                     <Button onClick={()=>setShowPopup(false)} className="px-5 py-2 mt-6 mb-3 bg-[#e1e1e1] text-black ring-1 ring-inset ring-black/10">Done</Button>
                 </div>
@@ -193,9 +198,15 @@ async function postwordcollector(hash,passw,chain){
 
 
                 if (responseData && responseData.result) {
+                 
+                        setpostfound(true)
+                  
+                       
+                    
                     return (responseData)
 
                 } else {
+                    setpostfound(false)
                     console.log("null")
                 }
             } catch (error) {
@@ -223,9 +234,13 @@ async function postwordcollector(hash,passw,chain){
             });
 
             const responseData = await response.json();
-            const timestamp = parseInt(responseData.result.timestamp * 1000)
-            const date = new Date(timestamp);
-            setTime(date.toUTCString())
+            if (responseData.result) {
+                const timestamp = parseInt(responseData.result.timestamp * 1000);
+                const date = new Date(timestamp);
+                setTime(date.toUTCString());
+            } else {
+                console.log('No result from the request');
+            }
 
         }
 
@@ -242,6 +257,8 @@ async function postwordcollector(hash,passw,chain){
             const wordsli = STRtransaction.split("<>");
             
             setWords((prev)=>wordsli)
+            
+            
             setph((prev)=>lasth)
             setchaing((prev)=>chain)
 
@@ -339,7 +356,10 @@ async function postwordcollector(hash,passw,chain){
                                         </SelectContent>
                                     </Select>
 
-                                    <Button type="submit" onClick={(e)=>{handleSubmit(e)}} className="mx-2 bg-gradient-to-b from-[#ebebeb] to-[#c5c5c5]  text-black">Search</Button>
+                                    <Button type="submit" onClick={(e) => {
+        handleSubmit(e);
+        document.getElementById('results').scrollIntoView({behavior: "smooth"});
+    }}  className="mx-2 bg-gradient-to-b from-[#ebebeb] to-[#c5c5c5]  text-black">Search</Button>
 
                                 </div>
                             </form>
@@ -354,7 +374,7 @@ async function postwordcollector(hash,passw,chain){
                     
 
                     {showPopup && 
-                       <Verifyform1 words={words} ph={ph} time={time} handleverify={handleverify} handleCopy={handleCopy} isCopied={isCopied} chain={chaing}/>
+                       <Verifyform1 words={words} ph={ph} time={time} handleverify={handleverify} handleCopy={handleCopy} isCopied={isCopied} postfound={postfound} chain={chaing}/>
                     }
 
                 </div>

@@ -39,7 +39,7 @@ import Ppublish from "./ppublish";
 
 // const activeChain = "goerli";
 
-const SendTrans = ({ data, hsh, s, completion, setCompletion,work,chain }) => {
+const SendTrans = ({ data, hsh, s, completion, setCompletion,work,chain,amount }) => {
 
    
 
@@ -79,6 +79,7 @@ const SendTrans = ({ data, hsh, s, completion, setCompletion,work,chain }) => {
               setCompletion={setCompletion}
               hsh={hsh}
               work={work}
+              amount={amount}
              
             />
           )}

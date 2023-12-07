@@ -7,7 +7,7 @@ import humanTime from "../lib/humantime"
 
 function Herotablepc({ dat }) {
   const logo_styles={
-    11155111: "h-[13px] w-auto ml-2",
+    11155111: "h-[20px] w-auto ml-2",
       80001: "h-[18px] w-auto ml-2",
       97: "h-[18px] w-auto ml-2",
       43113:"w-auto h-[22px] grayscale ml-2",
@@ -15,7 +15,7 @@ function Herotablepc({ dat }) {
       43114:"w-auto h-[22px] grayscale ml-2",
       137: "h-[18px] w-auto ml-2",
       56: "h-[18px] w-auto ml-2",
-      1: "h-[13px] w-auto ml-2",
+      1: "h-[20px] w-auto ml-2",
   }
     return (
         <table className="custom-table w-full ">

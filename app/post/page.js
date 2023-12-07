@@ -9,6 +9,7 @@ import Footer from "./../../components/footer"
 import CryptoJS from "crypto-js";
 const sha256 = require("sha256");
 import { useDebounce } from 'use-debounce';
+import fetchChainData from '@/lib/price';
 
 import { Stepper, Step, CardHeader } from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -69,6 +70,7 @@ export default function Home() {
     const [auter, setauter] = useState(false);
     const [chain, setchain] = useState("");
     const [rpc, setrpc] = useState("");
+    const [amount,setamount]=useState("0.01")
     
 
 
@@ -76,13 +78,25 @@ export default function Home() {
 
         if (chain) {
             setrpc((prev)=>networks(chain))
+            getPrice(chain)
+            console.log(amount)
         }
-        
+
+        async function getPrice(chainName) {
+            try {
+              const result = await fetchChainData(chainName);
+              var price = result.result[networks(chainName,'id_usd')]
+              setamount(()=>5/price) 
+            } catch (error) {
+              console.error(`Error fetching price for ${chainName}:`, error);
+            }
+          }
 
     }, [chain]);
 
 
-
+  
+      
     function handleAuter() {
         setauter(!auter)
     }
@@ -400,7 +414,8 @@ export default function Home() {
                     <div className="flex flex-col px-2">
                         {activeStep === 0 && (
                             <div className="flex flex-col items-center">
-                                <PageComponent s="showwal" className="self-center" chain={setchain} />
+                                <div className="md:my-4 md:mx-4 my-2">
+                                <PageComponent s="showwal" className="self-center md:py-4" chain={setchain} /></div>
                                 <div className="backdrop-blur-md bg-black/30 text-center items-center w-auto lg:min-w-700 rounded-md border-0 bg-black/5 px-3.5 py-3.5 text-[#DADADA] shadow-sm ring-1 ring-inset ring-white/10 my-4 ">
                                     <p className="text-left pb-3 m-auto">Encrypt Post Transaction:</p>
                                     <input
@@ -543,7 +558,7 @@ export default function Home() {
                             </button>
 
                             <div onClick={handlePublish}>
-                                <PageComponent data={publishData} s={activeStep} hsh={handlePublishHash} completion={published} setCompletion={handlePublishCompletion} />
+                                <PageComponent data={publishData} s={activeStep} hsh={handlePublishHash} completion={published} setCompletion={handlePublishCompletion} chain={chain} amount={amount} />
                             </div>
 
                         </div>

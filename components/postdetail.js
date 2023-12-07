@@ -106,7 +106,7 @@ export default function postdetail({...props}){
                   </p>
                 </div>
   
-                <p className="my-auto text-[12px] md:text-[14px] inline-block md:w-[367.9px] w-[136px] break-words text-[#DADADA]">
+                <p className="my-auto text-[12px] md:text-[14px] inline-block md:w-fit md:mr-1 w-[136px] break-words text-[#DADADA]">
                   {props.addressdetail}
                 </p>
                 <div>

@@ -3,14 +3,14 @@ import { LuExternalLink } from 'react-icons/lu'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Badge } from '@/components/ui/badge'
 
-export default function confirmed (props) {
+export default function confirmed ({ words,chain, pwords, ph,userDetail }) {
   // w-[95%] flex flex-col md:w-[60%] pt-[45px] md:pt-[47px] mx-auto md:max-w-[685px] max-h-[620px] md:max-h-[645px] border-[#5A5A5A] border border-solid border-[0px]
   return (
     <div className='w-[95%]  flex flex-col md:w-[60%]  mx-auto md:max-w-[685px] max-h-[620px] md:max-h-[645px]  '>
-      <h3 className='mx-auto text-center text-lg font-black mb-[18px] md:mb-4'>
+      <h3 className='mx-auto text-center text-lg font-semibold mb-[18px] md:mb-4'>
         Your details confirmed!
       </h3>
-      <Confirmed1 />
+      <Confirmed1 words={words} pwords={pwords} ph={ph} chain={chain}/>
       <Badge className='text-[#d5d5d5] my-[20px] px-5 py-3 border-[#5A5A5A]  border-solid border-[1px] ring-1 ring-inset ring-white/10 rounded-full w-fit mx-auto badgebox'>
         <IconCheck className='h-4 w-4' />
         Confirmed
@@ -24,15 +24,15 @@ export default function confirmed (props) {
           <div className=' text-sm font-light'>
   <div className='flex justify-between font-light items-center'>
     <span className='text-right  w-1/2 pr-2 overflow-hidden overflow-ellipsis'>Name:</span>
-    <span className='text-left w-1/2 overflow-hidden overflow-ellipsis'>John Doe</span>
+    <span className='text-left w-1/2 overflow-hidden overflow-ellipsis'>{userDetail.name}</span>
   </div>
   <div className='flex justify-between items-center'>
     <span className='text-right w-1/2 pr-2 overflow-hidden overflow-ellipsis'>Date of Birth:</span>
-    <span className='text-left w-1/2 overflow-hidden overflow-ellipsis'>January 1, 1980</span>
+    <span className='text-left w-1/2 overflow-hidden overflow-ellipsis'>{userDetail.date}</span>
   </div>
   <div className='flex justify-between items-center'>
     <span className='text-right w-1/2 pr-2 overflow-hidden overflow-ellipsis'>ID Number:</span>
-    <span className='text-left w-1/2 overflow-hidden overflow-ellipsis'>123456789</span>
+    <span className='text-left w-1/2 overflow-hidden overflow-ellipsis'>{userDetail.id}</span>
   </div>
 </div>
 
@@ -42,33 +42,33 @@ export default function confirmed (props) {
   )
 }
 
-function Confirmed1 (props) {
+function Confirmed1 ({ words, pwords, ph,chain }) {
   return (
     <div className='mx-auto w-full'>
       <div className='flex flex-col mx-auto w-[90%] rounded-md   px-[13px] py-[21px]   md:h-[130px] h-[130px] flex-shrink-0 border-solid border-[1px] border-gray-700 confirmedcontainer1 ggg-[#060606] ring-1 ring-inset ring-white/10'>
         <a
-          href='#'
+          href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}&ph=${ph}`}
           target='_blank'
           className='flex flex-row items-center mx-auto'
         >
-          <p className='md:max-w-[450px]  md:w-fit md:mr-2 w-[183px] h-auto truncate md:text-sm text-[14px] text-ellipsis overflow-hidden break-words text-[#D9D9D9] font-light'>
-            ethas awd asdweasdjdaa...
+          <p className='md:max-w-[90%]  md:w-auto md:mr-2 w-[90%] h-auto truncate md:text-sm text-[14px] text-ellipsis overflow-hidden break-words text-[#D9D9D9] font-light'>
+          {pwords.words[4]}
           </p>
           <LuExternalLink className='inline' />
         </a>
 
         <div className='font-extralight md:text-sm mx-auto text-[12px]  text-[#BEBEBE] md:mb-[11px] mb-[1px]  flex items-center'>
-          <p>Sun, 21 Oct 2023 05:28:00 GMT</p>
+          <p>{pwords.date}</p>
         </div>
 
         <div className='pl-[14px] mt-[16px] md:mt-[0px] mx-auto flex flex-row  rounded-[9px] ggg-[#070707] box-border w-[95%] h-[35px] md:h-[35px] border-[1px] border-[#585858] border-solid border-d'>
           <div className='flex items-center w-full justify-between '>
             <p className='text-[12px] font-light md:text-xs md:mt-1 mt-[0px] overflow-x-hidden mr-1 w-[90%]  text-ellipsis overflow-hidden h-auto text-[#DADADA]'>
-              0xb30357ffd7f46d0993535108725bec8b51e9efa7b9fedc001bd53c8adfd60579
+              {ph}
             </p>
 
             <div className='mr-1'>
-              <CopyToClipboard text={'ff'} onCopy={() => {}}>
+              <CopyToClipboard text={ph} onCopy={() => {}}>
                 <div className=''>
                   {false ? (
                     <img
