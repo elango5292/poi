@@ -12,7 +12,7 @@ function Page ({ item }) {
   return (
     <Link href={`/innovations/${item.hash}/?chain=${item.chain}`}>
       <div
-        className='flex flex-col animate-fade-in-up  mt-2 flex-wrap bg-transparent border-[#5c5c5c]  hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#DADADA] rounded-[4px] border-[1px] my-1 py-4 pl-4'
+        className='flex flex-col animate-fade-in-up  mt-2 flex-wrap bg-transparent border-[#2b2b2b]  hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#DADADA] rounded-[4px] border-[1px] my-1 py-4 pl-4'
         key={item.id}
       >
         <>

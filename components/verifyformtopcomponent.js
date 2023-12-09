@@ -9,7 +9,9 @@ export default function verfytopcomponent ({ words, pwords, chain, ph }) {
     <div className='flex overflow-hidden flex-col mt-4 mx-auto'>
       <div className='flex flex-col w-[320px]   md:w-[675px] rounded-2xl  mx-auto md:mx-[0px] px-[13px] py-[21px] md:px-[37px] md:py-[19px]  md:h-[130px] h-[130px] flex-shrink-0 border-solid border-[1px] border-gray-700 bg-gradient-to-b from-[#0F0F0F] to-[#000]'>
         <a
-          href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}&ph=${ph}`}
+          href={`/verify/${words[1]}/?p=${encodeURIComponent(
+            words[2]
+          )}&chain=${chain}&ph=${ph}`}
           target='_blank'
           className='flex flex-row items-center'
         >

@@ -47,7 +47,9 @@ function Confirmed1 ({ words, pwords, ph,chain }) {
     <div className='mx-auto w-full'>
       <div className='flex flex-col mx-auto w-[90%] rounded-md   px-[13px] py-[21px]   md:h-[130px] h-[130px] flex-shrink-0 border-solid border-[1px] border-gray-700 confirmedcontainer1 ggg-[#060606] ring-1 ring-inset ring-white/10'>
         <a
-          href={`/verify/${words[1]}/?p=${words[2]}&chain=${chain}&ph=${ph}`}
+          href={`/verify/${words[1]}/?p=${encodeURIComponent(
+            words[2]
+          )}&chain=${chain}&ph=${ph}`}
           target='_blank'
           className='flex flex-row items-center mx-auto'
         >

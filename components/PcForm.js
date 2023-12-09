@@ -130,7 +130,7 @@ if (act) {
 
         </div>
         {/* Continue Button */}
-        <div className='flex flex-col my-7 w-auto items-end pr-[5%]  pb-2'>
+        <div className='flex flex-col mt-12 mb-12 w-auto items-start  ml-9  pb-2'>
         <div className='flex flex-col gap-2 w-auto items-start justify-start  pb-2'>
         < Atos colorr={coloract} setChecked={setAct} checked={act}/>
             <div
