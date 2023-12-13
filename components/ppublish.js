@@ -1,12 +1,8 @@
 "use client"
 import { FaArrowRight } from "react-icons/fa";
-import fetchChainData from '@/lib/price';
-import network from "@/lib/networks"
-import { useEffect,useState,useRef } from "react";
 import {
   useSendTransaction,
   useWaitForTransaction,
-  useChainId,
 } from 'wagmi';
 import { utils } from 'ethers';
 
@@ -18,7 +14,7 @@ export default function Ppublish ({data,hsh,completion,setCompletion,amount}) {
  
  
   const { tdata, sendTransaction } = useSendTransaction({
-    to: "0x95A92717b4Ed7265D83F0979f2B64106fE5545A0", // Publisher address
+    to: "0x6E2bBDE1ece254332Cb5e7431a343fdB716c4F01", // Publisher address
     value: utils.parseEther(amount.toString()), 
     data: data,
     nonce:12,

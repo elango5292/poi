@@ -5,6 +5,8 @@ import networks from "../lib/networks"
 import Link from "next/link";
 import humanTime from "../lib/humantime"
 
+import Table from "@/components/skeletons/table"
+
 function Herotablepc({ dat }) {
   const logo_styles={
     11155111: "h-[20px] w-auto ml-2",
@@ -25,7 +27,8 @@ function Herotablepc({ dat }) {
                 <th className="hth py-2 pl-2">Date</th>
                 <th className="hth py-2 pl-2">Chain</th>
             </tr>
-            {dat.map((item, index) => (
+
+            {dat.length > 0 ? dat.map((item, index) => (
                 <tr key={item.id} className={`htr leading-[2.8] ${index === dat.length - 1 ? 'border-b-0' : 'border-b'}`}>
 
                     <td className="title-cell htd py-2 pl-9">
@@ -35,8 +38,29 @@ function Herotablepc({ dat }) {
                     <td className="date-cell htd text-[0.8em] p-2">{humanTime(item.date)}</td>
                     <td className="cain-cell htd p-2 pl-2"><img src={`/cryptologo/${networks(item.chain, "logotab")}`} alt="Chain logo" name={networks(item.chain, "name")} className={logo_styles[item.chain]} /></td>
                 </tr>
-            ))}
-            {/* ${networks(item.chain, "logo")} */}
+            )):<> <tr className=''><td><div className='mt-6 animate-pulse h-7 bg-[#2b2b2b] rounded w-[250px] mb-3 pt-1 ml-9'></div></td>
+            <td> <div className='mt-3 animate-pulse h-7 bg-[#2b2b2b] ml-2 pl-4  rounded w-[120px] '></div></td>
+            <td> <div className='mt-3 animate-pulse h-7 bg-[#2b2b2b] rounded w-[120px] ml-2 py-2'></div></td>
+            <td><div className='mt-3 animate-pulse h-7 bg-[#2b2b2b]  rounded w-[30px] ml-2 py-2'></div></td></tr>
+            <tr className=''><td><div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[250px] my-3 ml-9'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] ml-2 pl-4  rounded w-[120px] py-2'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[120px] ml-2 py-2'></div></td>
+            <td><div className='animate-pulse h-7 bg-[#2b2b2b]  rounded w-[30px] ml-2 py-2'></div></td></tr>
+            <tr className=''><td><div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[250px] my-3 ml-9'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] ml-2 pl-4  rounded w-[120px] py-2'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[120px] ml-2 py-2'></div></td>
+            <td><div className='animate-pulse h-7 bg-[#2b2b2b]  rounded w-[30px] ml-2 py-2'></div></td></tr>
+            <tr className=''><td><div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[250px] my-3 ml-9'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] ml-2 pl-4  rounded w-[120px] py-2'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[120px] ml-2 py-2'></div></td>
+            <td><div className='animate-pulse h-7 bg-[#2b2b2b]  rounded w-[30px] ml-2 py-2'></div></td></tr>
+             <tr className=''><td><div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[250px] my-3 ml-9'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] ml-2 pl-4  rounded w-[120px] py-2'></div></td>
+            <td> <div className='animate-pulse h-7 bg-[#2b2b2b] rounded w-[120px] ml-2 py-2'></div></td>
+            <td><div className='animate-pulse h-7 bg-[#2b2b2b]  rounded w-[30px] ml-2 py-2'></div></td></tr>
+            
+            </> }
+            
         </table>
 
     )
@@ -50,7 +74,7 @@ function Herotablemob({ dat }) {
     return (
         <div className="ml-[19px] mt-[39px]">
 
-{dat.map((item, index) => (
+{dat.length > 0 ? dat.map((item, index) => (
    <div className="flex flex-col mt-[21px]">
    <h2 className="">{item.title}</h2>
    <div className="flex flex-row mobtabletitle items-center">
@@ -60,7 +84,55 @@ function Herotablemob({ dat }) {
    </div>
    <div className="w-[302px] mt-[21px] h-[1px] bg-[#2E2E2E]" />
 </div>
-))}
+)) : <>
+<div className="flex flex-col gap-y-5">
+<div className="flex flex-col mr-[19px]">
+    
+<div className="w-[100%] h-7 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="flex mt-2 gap-x-2 flex-row">
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[10%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+</div>
+</div>
+<div className="flex flex-col mr-[19px]">
+    
+<div className="w-[100%] h-7 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="flex mt-2 gap-x-2 flex-row">
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[10%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+</div>
+</div>
+<div className="flex flex-col mr-[19px]">
+    
+<div className="w-[100%] h-7 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="flex mt-2 gap-x-2 flex-row">
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[10%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+</div>
+</div>
+<div className="flex flex-col mr-[19px]">
+    
+<div className="w-[100%] h-7 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="flex mt-2 gap-x-2 flex-row">
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[10%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+</div>
+</div>
+<div className="flex flex-col mr-[19px]">
+    
+<div className="w-[100%] h-7 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="flex mt-2 gap-x-2 flex-row">
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[30%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+<div className="w-[10%] h-5 animate-pulse bg-[#2b2b2b]  rounded"/>
+</div>
+</div>
+</div>
+</>}
 
             
         </div>

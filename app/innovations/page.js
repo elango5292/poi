@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { MdHideSource } from 'react-icons/md'
 import { AiOutlineSearch } from 'react-icons/ai'
+import Notfound from "@/components/notfound"
 import Link from 'next/link'
 import debounce from 'lodash/debounce'
 import Footer from './../../components/footer'
@@ -150,11 +151,15 @@ export default function Verify () {
         </div>
         <div className='flex-1 md:scrollbar md:scrollbar-w-[2px] md:scrollbar-rounded md:scrollbar-thumb-[#3a3a3a] md:scrollbar-track-[#DADADA] overflow-y-auto p-6'>
           <div className='space-y-2  md:space-y-2'>
-            <h1 className='my-3 text-xl'>Recent Posts</h1>
+            {search.length === 0 ?  <h1 className='my-3 text-xl'>Recent Posts</h1>: <h1 className='my-3 text-xl'>Search Results</h1>}
+           
             {skeleload ? (
               <Loadskelelist />
             ) : (
-              pages.map(item => <Page key={item.id} item={item} />)
+              <>
+              {pages.length === 0 && <Notfound />}
+              {pages.map(item => <Page key={item.id} item={item} />)}
+            </>
             )}
 
             {load ? (

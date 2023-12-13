@@ -12,14 +12,14 @@ import {
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-[#8F9199] text-left ">Why should I record my ideas?</AccordionTrigger>
           <AccordionContent className="text-[#7D7D7D] text-left">
-          Recording your ideas with blockchain technology creates a immutable record which links you and your idea. This provides a peace of mind during collaboration, feedback-seeking, and publishing, safeguarding your ownership.
+          By leveraging the immutability of blockchain technology, you can permanently link yourself to your ideas, providing steadfast ownership and peace of mind during collaboration, feedback, and publication.
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-2">
           <AccordionTrigger className="text-[#8F9199] text-left"> Is it safe to enter my personal details?</AccordionTrigger>
           <AccordionContent className="text-[#7D7D7D]">
-          Your personal information - such as your date of birth and ID - doesn't leave your browser. Only a hash of it is stored along other post details on the blockchain, creating a verifiable link between your name, date of birth, and an official ID. This distinction also helps identify individuals with the same name and birthdate.
+          Your personal information, like date of birth and ID, never leaves your browser. Instead, only a secure hash is stored on the blockchain along with other post details. This creates a verifiable link between your name, date of birth, and official ID, while also protecting your privacy. This method also helps differentiate individuals with the same name and birthdate.
           </AccordionContent>
         </AccordionItem>
 

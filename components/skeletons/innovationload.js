@@ -39,25 +39,4 @@ function huh () {
 }
 export default huh
 
-{
-  /* <div className=" mt-24 flex flex-col flex-wrap bg-transparent border-[#2E2E2E] hover:cursor-pointer hover:bg-[#0B0B0B] hover:border-[#DADADA] rounded-[4px] border-[1px] my-1 py-4 pl-4">
-<>
-              <p className="font-light text-[#DADADA] tracking-[0.2px]">Wed, 15 Nov 2023 08:33:00 GMT</p>
-          </>
-          <>
-              <h1 className="font-bold tracking-[-0.01px] text-[#DADADA] mr-2 my-2">Chelsea FC face new questions over how</h1>
-          </>
-          <>
-              {true ? (
-                  <p className="mr-2">
-                      <CgProfile className="mr-2 font-medium text-[#DADADA] tracking-[-0.085px] inline" />
-                      QWERTYUIOP
-                  </p>
-              ) : (
-                      <p className="mr-2">
-                          <MdHideSource className="mx-2 inline text-[#DADADA]" /> "Annonymous"
-                      </p>
-                  )}
-          </>
-</div> */
-}
+

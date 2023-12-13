@@ -33,7 +33,7 @@ export default function postdetail({...props}){
               <div className='flex flex-col md:flex-row md:items-center md:mt-[30px] mt-[41px]'>
                 <div className=''>
                   <img src="/tooltip.svg" className='inline mr-[9px] w-[1em] h-auto' data-tooltip-id="publish-tooltip"
-                    data-tooltip-content="Publish hash"
+                    data-tooltip-content="Transaction hash of publication on the blockchain"
                     data-tooltip-place="top" ></img><Tooltip className='publishtooltipstyle'  id="publish-tooltip" /><p className=" text-[#DADADA] inline-block w-[129px] h-[17px]">
                     Publish Hash :
                   </p>
@@ -67,7 +67,7 @@ export default function postdetail({...props}){
                 <div className='flex flex-col md:flex-row md:items-center md:mt-[30px] mt-[41px]'>
                 <div className=''>
                   <img src="/tooltip.svg" className='inline mr-[9px] w-[1em] h-auto' data-tooltip-id="publish-tooltip"
-                    data-tooltip-content="Hello world!"
+                    data-tooltip-content="Transaction hash of posting on the blockchain"
                     data-tooltip-place="top"></img><Tooltip id="publish-tooltip" /><p className=" text-[#DADADA] inline-block w-[129px] h-[17px]">
                     post Hash :
                   </p>
