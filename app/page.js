@@ -51,14 +51,14 @@ export default function Home() {
 
     return (
       <div className=" mt-9 overflow-x-hidden">
-        <Heroj/>
+        {/* <Heroj/> */}
         <Hero3 w={width}/>
 
-        <Herozag/>
+        {/* <Herozag/> */}
         
-        <Herovid />
-        <Herofaq/> 
-        <Footer/>
+        {/* <Herovid /> */}
+        {/* <Herofaq/>  */}
+        {/* <Footer/> */}
       
       </div>
     );

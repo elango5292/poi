@@ -816,3 +816,40 @@ html {
     opacity: 1;
   }
 }
+
+.copieddesign{
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background: linear-gradient(180deg, #141414 0%, #000 59.9%) padding-box,
+    radial-gradient(at top, #d3d3d3, #000000) border-box;
+}
+
+
+
+.loading-border {
+ position: absolute;
+ left:0;
+  bottom: 0;
+  height: 4px;
+  width: 150%;
+  background-color:  #979797;
+  animation: my-animation 3s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+.nonloading-border {
+ position: absolute;
+ left:0;
+  bottom: 0;
+  height: 3px;
+  width: 150%;
+  background-color:  #979797;
+}
+
+@keyframes my-animation {
+  0% {
+    transform: translateX(-0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

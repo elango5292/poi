@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "components/nav"
-// import Footer from "./../components/footer"
+import { Toaster } from "../components/ui/toaster";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <body className={inter.className}>
 
         <Navbar />
@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
         {children}
         
         </div>
+        <Toaster duration = {3000} />
       </body>
       
     
