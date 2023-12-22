@@ -301,7 +301,7 @@ async function postwordcollector(hash,passw,chain){
         }
 
         return (
-            <div className="min-h-screen w-[98vw] overflow-hidden ">
+            <div className="min-h-fit -mb-9 bg-gradient-to-b from-[#000] to-[#111111] via-[#000] w-[98vw] overflow-hidden ">
                 <div className="min-h-[90vh] mx-auto flex flex-col">
                     <div className=" mx-auto flex flex-col ">
                         <h1 className=" h-[28px] w-[257px] md:w-auto text-[#D8D8D8] md:text-center text-[16px] md:text-2xl font-semibold leading-normal">

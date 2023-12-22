@@ -24,13 +24,20 @@ import {
         </AccordionItem>
 
         <AccordionItem value="item-3">
-          <AccordionTrigger className="text-[#8F9199] text-left">Why are there two seperate passwords?
+          <AccordionTrigger className="text-[#8F9199] text-left">What is the purpose of having two separate passwords?
 </AccordionTrigger>
           <AccordionContent className="text-[#7D7D7D] text-left">
           Both passwords serve as encryption keys at different stages of publication. The Transaction Password serves as the initial encryption key, encrypting the initial posting process where the entire post is encrypted to secure authorship from block miners. This password is disclosed only after the initial data is successfully recorded and confirmed with at least 7 block confirmations. In contrast, the Identity Password remains concealed and exclusively serves to encrypt and verify the user's identity, which is used to verify authorship in case of a dispute.
           </AccordionContent>
         </AccordionItem>
-      </Accordion>
+        <AccordionItem value="item-4">
+          <AccordionTrigger className="text-[#8F9199] text-left">What is the cost to publish a post on your platform?
+</AccordionTrigger>
+          <AccordionContent className="text-[#7D7D7D] text-left">
+          The cost of publishing a post on a blockchain depends on its length and the chosen platform. For 1000-word posts, Filecoin and Polygon offer the most economical options, typically costing around $5 for Filecoin and $20 for Polygon. Other blockchains like BNB and Avalanche fall in the $150 range. Publishing on Ethereum is generally not advisable due to its higher fees.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>                                                             
     )
   }
   

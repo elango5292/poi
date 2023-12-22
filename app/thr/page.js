@@ -1,12 +1,11 @@
 "use client"
-import Notfound from "@/components/notfound"
-import Table from "@/components/skeletons/table"
+import Share from "@/components/share"
 export default function yt() {
 
 
   return (
     <div className="mt-24 flex-col flex gap-y-4">
-       <Table/>
+       <Share textToShare="Share link copied!" tostmessage="Share link copied!"/>
      
     </div>
   );

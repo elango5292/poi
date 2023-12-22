@@ -3,7 +3,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
-  sepolia,arbitrum,avalanche,bscTestnet,bsc,polygonMumbai,polygon,mainnet,avalancheFuji
+  sepolia,arbitrum,avalanche,bscTestnet,bsc,polygonMumbai,polygon,mainnet,avalancheFuji,filecoin
 } from "wagmi/chains";
 
 
@@ -11,7 +11,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient } = configureChains(
-  [mainnet, bsc, polygon, avalanche, arbitrum, avalancheFuji, bscTestnet, polygonMumbai, sepolia
+  [mainnet, bsc, polygon, avalanche, arbitrum, avalancheFuji,filecoin, bscTestnet, polygonMumbai, sepolia
   ],
   [
     alchemyProvider({ apiKey: process.env.ALC_API_KEY  }),

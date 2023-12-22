@@ -18,6 +18,7 @@ function Herotablepc({ dat }) {
       137: "h-[18px] w-auto ml-2",
       56: "h-[18px] w-auto ml-2",
       1: "h-[20px] w-auto ml-2",
+      314: "h-[20px] hover:h-[22px] grayscale w-auto ml-2",
   }
     return (
         <table className="custom-table w-full ">
